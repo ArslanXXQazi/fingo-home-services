@@ -35,14 +35,10 @@ class ServiceStatusCard extends StatelessWidget {
                     width: screenWidth * 0.12,
                     height: screenWidth * 0.12,
                     decoration: BoxDecoration(
-                      color: AppColors.greenColor.withOpacity(0.25),
+                      color: AppColors.greenColor.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(
-                      Icons.signal_cellular_alt,
-                      color: AppColors.whiteColor,
-                      size: screenWidth * 0.06,
-                    ),
+                    child: Center(child: ImageIcon(AssetImage(AppImages.serviceStatus),size: screenWidth*.07,color: AppColors.greenColor)),
                   ),
                   SizedBox(width: screenWidth * 0.03),
                   // Middle: Service Status Text
