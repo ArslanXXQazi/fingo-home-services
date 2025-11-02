@@ -332,53 +332,46 @@ class BookingCard extends StatelessWidget {
                     final isLoading = controller != null &&
                         controller!.isAccepting(booking.id);
 
-                    return GestureDetector(
-                      onTap: isLoading
-                          ? null
-                          : () {
-                              showAcceptRejectDialog(
-                                context: context,
-                                isAccept: true,
-                                onConfirm: () {
-                                  onAccept?.call();
-                                },
-                              );
-                            },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: screenHeight * 0.015),
-                        decoration: BoxDecoration(
-                          color: isLoading
-                              ? AppColors.greenColor.withOpacity(0.6)
-                              : AppColors.greenColor,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.greenColor.withOpacity(0.3),
-                              spreadRadius: 1,
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
+                    if (isLoading) {
+                      return GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: double.infinity,
+                          height: screenHeight * 0.055,
+                          decoration: BoxDecoration(
+                            color: AppColors.orangeColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: SizedBox(
+                              width: screenWidth * 0.05,
+                              height: screenWidth * 0.05,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white),
+                              ),
                             ),
-                          ],
+                          ),
                         ),
-                        child: Center(
-                          child: isLoading
-                              ? SizedBox(
-                                  width: screenWidth * 0.05,
-                                  height: screenWidth * 0.05,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 2,
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.white),
-                                  ),
-                                )
-                              : BlackText(
-                                  text: 'Accept',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  textColor: Colors.white,
-                                ),
-                        ),
-                      ),
+                      );
+                    }
+
+                    return OrangeButton(
+                      onTap: () {
+                        showAcceptRejectDialog(
+                          context: context,
+                          isAccept: true,
+                          onConfirm: () {
+                            onAccept?.call();
+                          },
+                        );
+                      },
+                      text: "Accept",
+                      color: AppColors.orangeColor,
+                      textColor: Colors.white,
+                      borderRadius: 10,
+                      height: screenHeight * 0.05,
                     );
                   }),
                 ),
@@ -391,6 +384,7 @@ class BookingCard extends StatelessWidget {
                       borderColor: AppColors.orangeColor,
                       textColor: AppColors.orangeColor,
                       borderRadius: 10,
+                      height: screenHeight * 0.05,
                   ),
                 ),
               ],
