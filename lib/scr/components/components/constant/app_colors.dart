@@ -16,6 +16,7 @@ class AppColors
   static final Color whiteColor= Colors.white;
   static final Color blackColor= Colors.black;
   static final Color transparentColor= Colors.transparent;
+  static final Color greenColor= Color(0XFF4CAF50);
 
 
 }

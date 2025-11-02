@@ -13,6 +13,13 @@ class HomeController extends GetxController {
   final RxString contactEmailOrPhone = ''.obs;
   final RxString selectedLanguage = 'en'.obs;
   final RxString paymentMethod = 'Cash on Delivery'.obs;
+  
+  // Service Status variables
+  final RxBool isServiceEnabled = true.obs;
+  final RxString startTime = '12:00 AM'.obs;
+  final RxString endTime = '11:55 PM'.obs;
+  final RxString currentStatus = 'Within Hours'.obs;
+  
   // Bank form controllers
   final TextEditingController bankNameController = TextEditingController();
   final TextEditingController branchNameController = TextEditingController();
@@ -76,6 +83,12 @@ class HomeController extends GetxController {
     holderNameController.clear();
     accountNumberController.clear();
     otherInfoController.clear();
+  }
+
+  //===========>>> Toggle Service Status
+  void toggleServiceStatus() {
+    isServiceEnabled.value = !isServiceEnabled.value;
+    update();
   }
 
   @override

@@ -23,10 +23,11 @@ class HomeView extends StatelessWidget {
           child: Column(children: [
 
             SizedBox(height: screenHeight*.02),
-            
 
+            // Service Status Card
+            ServiceStatusCard(),
 
-
+            SizedBox(height: screenHeight*.02),
 
           ],),
         ),
