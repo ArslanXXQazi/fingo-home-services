@@ -90,12 +90,12 @@ class BookingFilterButtons extends StatelessWidget {
                 color: isSelected
                     ? AppColors.orangeColor.withOpacity(0.1)
                     : AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(8),
                 border: Border.all(
                   color: isSelected
                       ? AppColors.orangeColor
                       : Colors.grey.shade300,
-                  width: 1,
+                  width: 1.5,
                 ),
               ),
               child: Row(

@@ -115,7 +115,7 @@ class BookingCard extends StatelessWidget {
                           vertical: screenHeight * 0.008,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.blueColor,
+                          color: AppColors.orangeColor,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -149,20 +149,17 @@ class BookingCard extends StatelessWidget {
               else
                 Row(
                   children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: screenWidth * 0.09,
-                        height: screenWidth * 0.09,
-                        decoration: BoxDecoration(
-                          color: AppColors.blueColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          Icons.flag_sharp,
-                          color: AppColors.blueColor,
-                          size: screenWidth * 0.06,
-                        ),
+                    Container(
+                      width: screenWidth * 0.09,
+                      height: screenWidth * 0.09,
+                      decoration: BoxDecoration(
+                        color: AppColors.orangeColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.flag_sharp,
+                        color: AppColors.orangeColor,
+                        size: screenWidth * 0.06,
                       ),
                     ),
                     SizedBox(width: screenWidth * 0.01),
@@ -186,12 +183,12 @@ class BookingCard extends StatelessWidget {
                 width: screenWidth * 0.12,
                 height: screenWidth * 0.12,
                 decoration: BoxDecoration(
-                  color: AppColors.blueColor.withOpacity(0.1),
+                  color: AppColors.orangeColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
                   Icons.build,
-                  color: AppColors.blueColor,
+                  color: AppColors.orangeColor,
                   size: screenWidth * 0.06,
                 ),
               ),
@@ -242,12 +239,12 @@ class BookingCard extends StatelessWidget {
                 width: screenWidth * 0.08,
                 height: screenWidth * 0.08,
                 decoration: BoxDecoration(
-                  color: AppColors.blueColor.withOpacity(0.1),
+                  color: AppColors.orangeColor.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   Icons.person,
-                  color: AppColors.blueColor,
+                  color: AppColors.orangeColor,
                   size: screenWidth * 0.04,
                 ),
               ),
@@ -400,7 +397,7 @@ class BookingCard extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: screenHeight * 0.015),
                       decoration: BoxDecoration(
-                        color: AppColors.redColor,
+                        color: Colors.red,
                         borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
