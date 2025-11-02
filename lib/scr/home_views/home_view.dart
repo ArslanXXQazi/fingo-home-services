@@ -1,4 +1,3 @@
-import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,6 +5,8 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
     backgroundColor: AppColors.backGroundGrey,
      appBar: AppBar(
@@ -16,7 +17,20 @@ class HomeView extends StatelessWidget {
          textColor: AppColors.orangeColor,
        ),
      ),
-      
+      body: SafeArea(child: SingleChildScrollView(
+        child: Padding(
+          padding:  EdgeInsets.symmetric(horizontal: screenWidth*.02),
+          child: Column(children: [
+
+            SizedBox(height: screenHeight*.02),
+            
+
+
+
+
+          ],),
+        ),
+      )),
     );
   }
 }
