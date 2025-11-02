@@ -20,6 +20,12 @@ class HomeController extends GetxController {
   final RxString endTime = '11:55 PM'.obs;
   final RxString currentStatus = 'Within Hours'.obs;
   
+  // Performance Stats variables
+  final RxString averageRating = '0.0/5'.obs;
+  final RxString jobsCompleted = '0'.obs;
+  final RxString onTimeArrival = '0.0%'.obs;
+  final RxString repeatCustomers = '0'.obs;
+  
   // Bank form controllers
   final TextEditingController bankNameController = TextEditingController();
   final TextEditingController branchNameController = TextEditingController();

@@ -44,51 +44,73 @@ class HomeView extends StatelessWidget {
               textAlign: TextAlign.start,
             ),
             SizedBox(height: screenHeight*.02),
-
-            Container(
-              padding: EdgeInsets.all(screenWidth*.03),
-              width: screenWidth*.4,
-              decoration: BoxDecoration(
-                color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    spreadRadius: 1,
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
+            // Performance Cards Grid
+            GetBuilder<HomeController>(
+              builder: (c) {
+                return Column(
+                  children: [
+                    // First Row - 2 Cards
+                    Row(
+                      children: [
+                        Expanded(
+                          child: PerformanceCard(
+                            value: c.averageRating.value,
+                            label: "Average Rating",
+                            icon: Icons.star,
+                            onTap: () {},
+                          ),
+                        ),
+                        SizedBox(width: screenWidth * 0.03),
+                        Expanded(
+                          child: PerformanceCard(
+                            value: c.jobsCompleted.value,
+                            label: "Jobs Completed",
+                            icon: Icons.check_circle,
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: screenHeight * 0.02),
+                    // Second Row - 2 Cards
+                    Row(
+                      children: [
+                        Expanded(
+                          child: PerformanceCard(
+                            value: c.onTimeArrival.value,
+                            label: "On-Time Arrival",
+                            icon: Icons.access_time,
+                            onTap: () {},
+                          ),
+                        ),
+                        SizedBox(width: screenWidth * 0.03),
+                        Expanded(
+                          child: PerformanceCard(
+                            value: c.repeatCustomers.value,
+                            label: "Repeat Customers",
+                            icon: Icons.refresh,
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              },
+            ),
+              SizedBox(height: screenHeight*.02),
+              Row(
+                children: [
+                  Icon(Icons.feedback,color: AppColors.orangeColor,size: screenWidth*.06,),
+                  SizedBox(width: screenWidth*.02),
+                  BlackText(
+                    text: "Customer Feedback",
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    textColor: AppColors.orangeColor,
                   ),
                 ],
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Row(children: [
-                  BlackText(
-                    text: "0.0/5",
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700
-                  ),
-                  Spacer(),
-                  CircleAvatar(
-                    radius: screenWidth*.035,
-                    backgroundColor: AppColors.backGroundGrey,
-                    child: Icon(Icons.star,size: screenWidth*.05,),
-                  )
-
-                ],),
-                SizedBox(height: screenHeight*.01),
-                BlackText(
-                  text: "Average Ratting",
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  textAlign: TextAlign.start,
-                  textColor: AppColors.orangeColor,
-                )
-
-              ],),
-            )
-
 
 
           ],),
