@@ -11,6 +11,12 @@ class BookingController extends GetxController {
   // Loading state for accept action
   final RxMap<String, bool> acceptingBookings = <String, bool>{}.obs;
 
+  // Loading state for arrival at destination
+  final RxMap<String, bool> arrivingAtDestination = <String, bool>{}.obs;
+
+  // Bookings that have arrived (waiting for completion)
+  final RxSet<String> arrivedBookings = <String>{}.obs;
+
   // Get filtered bookings based on selected filter
   List<BookingModel> get filteredBookings {
     if (selectedFilter.value == 'all') {
@@ -74,6 +80,52 @@ class BookingController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: AppColors.redColor,
         colorText: Colors.white);
+  }
+
+  // Arrival at Destination with loading
+  Future<void> arrivalAtDestination(String bookingId) async {
+    // Set loading state
+    arrivingAtDestination[bookingId] = true;
+
+    // Wait for 2 seconds
+    await Future.delayed(Duration(seconds: 2));
+
+    // Mark as arrived
+    arrivedBookings.add(bookingId);
+
+    // Remove loading state
+    arrivingAtDestination.remove(bookingId);
+
+    Get.snackbar('Success', 'Arrived at destination',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.greenColor,
+        colorText: Colors.white);
+  }
+
+  // Check if booking is arriving at destination
+  bool isArrivingAtDestination(String bookingId) {
+    return arrivingAtDestination[bookingId] ?? false;
+  }
+
+  // Check if booking has arrived (waiting for completion)
+  bool hasArrived(String bookingId) {
+    return arrivedBookings.contains(bookingId);
+  }
+
+  // Mark booking as completed
+  void markAsCompleted(String bookingId) {
+    final index = allBookings.indexWhere((b) => b.id == bookingId);
+    if (index != -1) {
+      final booking = allBookings[index];
+      allBookings[index] = booking.copyWith(
+        status: 'completed',
+      );
+      arrivedBookings.remove(bookingId);
+      Get.snackbar('Success', 'Booking completed successfully',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: AppColors.greenColor,
+          colorText: Colors.white);
+    }
   }
 
   // Load dummy data

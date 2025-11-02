@@ -426,35 +426,96 @@ class BookingCard extends StatelessWidget {
             ),
           ],
 
-          // Arrival at Destination Button (for accepted status)
+          // Arrival at Destination / Mark as Completed Button (for accepted status)
           if (booking.status.toLowerCase() == 'accepted') ...[
             SizedBox(height: screenHeight * 0.02),
-            GestureDetector(
-              onTap: () {
-                // Handle arrival at destination
-              },
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
-                decoration: BoxDecoration(
-                  color: AppColors.orangeColor,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.orangeColor.withOpacity(0.3),
-                      spreadRadius: 1,
-                      blurRadius: 4,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: BlackText(
-                    text: 'Arrival at Destination',
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    textColor: Colors.white,
+            Obx(() {
+              final isLoading = controller != null &&
+                  controller!.isArrivingAtDestination(booking.id);
+              final hasArrived = controller != null &&
+                  controller!.hasArrived(booking.id);
+
+              return GestureDetector(
+                onTap: isLoading
+                    ? null
+                    : () {
+                        if (hasArrived) {
+                          // Mark as completed
+                          controller?.markAsCompleted(booking.id);
+                        } else {
+                          // Arrival at destination
+                          controller?.arrivalAtDestination(booking.id);
+                        }
+                      },
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
+                  decoration: BoxDecoration(
+                    color: isLoading || hasArrived
+                        ? AppColors.greenColor
+                        : AppColors.orangeColor,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: (isLoading || hasArrived
+                                ? AppColors.greenColor
+                                : AppColors.orangeColor)
+                            .withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
+                  child: Center(
+                    child: isLoading
+                        ? SizedBox(
+                            width: screenWidth * 0.05,
+                            height: screenWidth * 0.05,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.white),
+                            ),
+                          )
+                        : BlackText(
+                            text: hasArrived
+                                ? 'Mark as Completed'
+                                : 'Arrival at Destination',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            textColor: Colors.white,
+                          ),
+                  ),
+                ),
+              );
+            }),
+          ],
+
+          // Completed Status - Green Button (for completed status)
+          if (booking.status.toLowerCase() == 'completed') ...[
+            SizedBox(height: screenHeight * 0.02),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
+              decoration: BoxDecoration(
+                color: AppColors.greenColor,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.greenColor.withOpacity(0.3),
+                    spreadRadius: 1,
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: BlackText(
+                  text: 'Completed',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  textColor: Colors.white,
                 ),
               ),
             ),
