@@ -25,13 +25,13 @@ void showAcceptRejectDialog({
                 height: MediaQuery.of(context).size.width * 0.15,
                 decoration: BoxDecoration(
                   color: isAccept
-                      ? AppColors.greenColor.withOpacity(0.1)
+                      ? AppColors.orangeColor.withOpacity(0.1)
                       : AppColors.redColor.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   isAccept ? Icons.check_circle : Icons.cancel,
-                  color: isAccept ? AppColors.greenColor : AppColors.redColor,
+                  color: isAccept ? AppColors.orangeColor : AppColors.redColor,
                   size: MediaQuery.of(context).size.width * 0.08,
                 ),
               ),

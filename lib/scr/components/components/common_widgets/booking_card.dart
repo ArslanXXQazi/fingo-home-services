@@ -392,7 +392,15 @@ class BookingCard extends StatelessWidget {
                 SizedBox(width: screenWidth * 0.03),
                 Expanded(
                   child: OrangeButton(
-                      onTap: (){},
+                      onTap: () {
+                        showAcceptRejectDialog(
+                          context: context,
+                          isAccept: false,
+                          onConfirm: () {
+                            onReject?.call();
+                          },
+                        );
+                      },
                       text: "Reject",
                       color: AppColors.transparentColor,
                       borderColor: AppColors.orangeColor,
