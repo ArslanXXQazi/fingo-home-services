@@ -39,7 +39,7 @@ class HomeView extends StatelessWidget {
             BlackText(
               text: "Stats reflecting your work on Fingo home services",
               fontSize: 12,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               textColor: AppColors.greyText,
               textAlign: TextAlign.start,
             ),
