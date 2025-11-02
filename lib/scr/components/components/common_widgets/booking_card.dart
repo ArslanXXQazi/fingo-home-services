@@ -3,6 +3,7 @@ import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.
 import 'package:fingodriver/scr/components/components/common_widgets/accept_reject_dialog.dart';
 import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_controller.dart';
 import 'package:fingodriver/scr/components/components/common_widgets/booking_details_bottom_sheet.dart';
+import 'package:fingodriver/scr/components/components/common_widgets/payment_received_dialog.dart';
 
 class BookingCard extends StatelessWidget {
   final BookingModel booking;
@@ -269,20 +270,24 @@ class BookingCard extends StatelessWidget {
           // Payment Details (for accepted and other statuses)
           if (booking.status.toLowerCase() != 'pending') ...[
             SizedBox(height: screenHeight * 0.015),
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: screenWidth * 0.04,
-                vertical: screenHeight * 0.012,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: Colors.grey.shade200,
-                  width: 1,
+            InkWell(
+              onTap: () {
+                showPaymentReceivedDialog(context: context);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.04,
+                  vertical: screenHeight * 0.012,
                 ),
-              ),
-              child: Row(
+                decoration: BoxDecoration(
+                  color: AppColors.whiteColor,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: Colors.grey.shade200,
+                    width: 1,
+                  ),
+                ),
+                child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Left side: Credit Card Icon and Payment Text
@@ -326,6 +331,7 @@ class BookingCard extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
               ),
             ),
           ],
