@@ -1,4 +1,5 @@
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingodriver/scr/home_views/booking_nav_view.dart';
 import 'package:fingodriver/scr/home_views/home_view.dart';
 import 'package:fingodriver/scr/home_views/my_profile_view.dart';
 import 'package:fingodriver/scr/home_views/wallet_view.dart';
@@ -17,7 +18,7 @@ class BottomNavView extends StatelessWidget {
           index: controller.currentIndex.value,
           children: [
             HomeView(),
-            Center(child: Text('Booking Page')),
+            BookingNavView(),
             WalletView(),
             MyProfileView(),
           ],

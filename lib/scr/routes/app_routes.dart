@@ -4,6 +4,7 @@
 import 'package:fingodriver/scr/bottom_nav_bar_views/bottom_nav_view.dart';
 import 'package:fingodriver/scr/home_views/account_detail_view.dart';
 import 'package:fingodriver/scr/home_views/add_bank_view.dart';
+import 'package:fingodriver/scr/home_views/booking_nav_view.dart';
 import 'package:fingodriver/scr/home_views/contact_us_view.dart';
 import 'package:fingodriver/scr/home_views/driver_inbox.dart';
 import 'package:fingodriver/scr/home_views/home_view.dart';
@@ -39,6 +40,7 @@ class AppRoutes {
   static  final String addBankView = '/addBankView';
   static  final String bottomNavView = '/bottomNavView';
   static  final String homeView = '/homeView';
+  static  final String bookingNavView = '/bookingNavView';
 
   static final routes = [
 
@@ -61,6 +63,7 @@ class AppRoutes {
     GetPage(name: addBankView, page: ()=>AddBankView()),
     GetPage(name: bottomNavView, page: ()=>BottomNavView()),
     GetPage(name: homeView, page: ()=>HomeView()),
+    GetPage(name: bottomNavView, page: ()=>BookingNavView()),
   ];
 
 
