@@ -165,7 +165,7 @@ class BookingCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Icon(
-                        Icons.flag_sharp,
+                        Icons.map,
                         color: AppColors.orangeColor,
                         size: screenWidth * 0.06,
                       ),
