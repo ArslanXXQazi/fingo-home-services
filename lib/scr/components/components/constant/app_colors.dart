@@ -12,6 +12,7 @@ class AppColors
   static final Color yellowColor= Color(0XFFfcd902);
   static final Color redColor= Color(0XFFFF6134);
   static final Color blueColor= Color(0XFF00A2D3);
+  static final Color backGroundGrey= Color(0xfff8f7f5);
   static final Color whiteColor= Colors.white;
   static final Color blackColor= Colors.black;
   static final Color transparentColor= Colors.transparent;
