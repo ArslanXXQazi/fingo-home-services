@@ -21,10 +21,6 @@ export 'package:fingodriver/scr/components/components/common_widgets/social_logi
 export 'package:fingodriver/scr/components/components/common_widgets/text_feild_widget.dart';
 export 'package:intl_phone_field/intl_phone_field.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/otp_field_widget.dart';
-export 'package:fingodriver/scr/components/components/common_widgets/ride_request_bottom_sheet.dart';
-export 'package:fingodriver/scr/components/components/common_widgets/swipe_to_start_button.dart';
-export 'package:fingodriver/scr/components/components/common_widgets/ride_start_bottom_sheet.dart';
-export 'package:fingodriver/scr/components/components/common_widgets/ride_in_progress_bottom_sheet.dart';
 export 'package:fingodriver/scr/home_views/home_controller/home_controller.dart';
 export 'package:fingodriver/scr/auth_view/login_view.dart';
 export 'package:fingodriver/scr/auth_view/otp_view.dart';

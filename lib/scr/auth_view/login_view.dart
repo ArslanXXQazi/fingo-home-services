@@ -78,7 +78,7 @@ class LoginView extends StatelessWidget {
                       final form = authController.signInFormKey.currentState;
                       if (form != null && form.validate()) {
                         Get.snackbar('Success', 'Logged in successfully');
-                        Get.toNamed(AppRoutes.homeView);
+                       Get.toNamed(AppRoutes.bottomNavView);
                       }
                     }, text: "Log in"),
                     SizedBox(height: screenHeight*.02),

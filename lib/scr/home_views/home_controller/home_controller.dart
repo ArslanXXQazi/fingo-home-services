@@ -28,59 +28,59 @@ class HomeController extends GetxController {
   // Swipe button related variables
   var isRideStarted = false.obs;
   var swipePosition = 0.0.obs;
-  
+
   // App bar title states
   var currentState = 'home'.obs; // 'home', 'go_to_pickup', 'ride_started', 'ride_in_progress'
-  
+
   @override
   void onInit() {
     super.onInit();
     print("HomeController initialized");
   }
-  
+
   // Swipe button methods
   void updateSwipePosition(double position) {
     swipePosition.value = position;
   }
-  
+
   void completeSwipe() {
     isRideStarted.value = true;
     swipePosition.value = 1000.0; // Set to max value
     print("Swipe completed - Ride started!");
   }
-  
+
   void resetSwipe() {
     swipePosition.value = 0.0;
     print("Swipe reset");
   }
-  
+
   void resetRideState() {
     isRideStarted.value = false;
     swipePosition.value = 0.0;
     print("Ride state reset");
   }
-  
+
   // App bar title methods
   void setGoToPickupState() {
     currentState.value = 'go_to_pickup';
     print("State changed to: Go to Pickup");
   }
-  
+
   void setRideStartedState() {
     currentState.value = 'ride_started';
     print("State changed to: Ride Started");
   }
-  
+
   void setRideInProgressState() {
     currentState.value = 'ride_in_progress';
     print("State changed to: Ride in Progress");
   }
-  
+
   void resetToHomeState() {
     currentState.value = 'home';
     print("State changed to: Home");
   }
-  
+
   String getAppBarTitle() {
     switch (currentState.value) {
       case 'go_to_pickup':
@@ -130,10 +130,10 @@ class HomeController extends GetxController {
 
     // Show success message
     Get.snackbar("Success", "Bank details added successfully");
-    
+
     // Navigate back to withdraw method screen
     Get.back();
-    
+
     // Clear form fields
     clearBankForm();
   }
