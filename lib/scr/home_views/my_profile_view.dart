@@ -25,60 +25,31 @@ class MyProfileView extends StatelessWidget {
           children: [
             SizedBox(height: screenHeight*.03),
             // Profile avatar with camera badge
-            Row(children: [
-
-              Container(
-                height: screenHeight*.15,
-                width: screenWidth*.4,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: screenWidth*.13,
-                      backgroundColor: const Color(0xFFD9D9D9),
-                    ),
-                    Positioned(
-                      right: screenWidth*.08,
-                      bottom: screenWidth*.03,
-                      child: GestureDetector(
-                        onTap: (){},
-                        child: CircleAvatar(
-                          radius: screenWidth*.04,
-                          backgroundColor: AppColors.orangeColor,
-                          child: SvgPicture.asset(AppImages.camera,width: screenWidth*.055,color: AppColors.whiteColor,),
-                        ),
+            Container(
+              height: screenHeight*.15,
+              width: screenWidth*.4,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: screenWidth*.13,
+                    backgroundColor: const Color(0xFFD9D9D9),
+                  ),
+                  Positioned(
+                    right: screenWidth*.08,
+                    bottom: screenWidth*.03,
+                    child: GestureDetector(
+                      onTap: (){},
+                      child: CircleAvatar(
+                        radius: screenWidth*.04,
+                        backgroundColor: AppColors.orangeColor,
+                        child: SvgPicture.asset(AppImages.camera,width: screenWidth*.055,color: AppColors.whiteColor,),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Container(
-                height: screenHeight*.15,
-                width: screenWidth*.4,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: screenWidth*.13,
-                      backgroundColor: const Color(0xFFD9D9D9),
-                    ),
-                    Positioned(
-                      right: screenWidth*.08,
-                      bottom: screenWidth*.03,
-                      child: GestureDetector(
-                        onTap: (){},
-                        child: CircleAvatar(
-                          radius: screenWidth*.04,
-                          backgroundColor: AppColors.orangeColor,
-                          child: SvgPicture.asset(AppImages.camera,width: screenWidth*.055,color: AppColors.whiteColor,),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-            ],),
+            ),
             BlackText(
               text: "abc asd",
               fontSize: 16,
