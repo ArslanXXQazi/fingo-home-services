@@ -1,8 +1,8 @@
-import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 
 class BookingNavView extends StatelessWidget {
-  const BookingNavView({super.key});
+   BookingNavView({super.key});
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class BookingNavView extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.backGroundGrey,
-     appBar: AppBar(
+      appBar: AppBar(
        backgroundColor: Colors.white,
        centerTitle: true,
        title: BlackText(
@@ -23,11 +23,21 @@ class BookingNavView extends StatelessWidget {
      ),
       body: SafeArea(child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth*.02),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth*.04),
           child: Column(children: [
 
             SizedBox(height: screenHeight*.02),
-            
+
+            TextFieldWidget(
+                controller: searchController,
+                hintText: "Search",
+                prefixIcon: Icon(Icons.search),
+                fillColor: Colors.white,
+            ),
+
+
+
+
 
           ],),
         ),
