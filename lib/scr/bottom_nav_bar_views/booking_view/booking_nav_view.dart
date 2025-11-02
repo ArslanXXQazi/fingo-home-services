@@ -69,6 +69,7 @@ class BookingNavView extends StatelessWidget {
                       final booking = controller.filteredBookings[index];
                       return BookingCard(
                         booking: booking,
+                        controller: controller,
                         onAccept: () {
                           controller.acceptBooking(booking.id);
                         },

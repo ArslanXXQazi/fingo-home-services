@@ -8,6 +8,9 @@ class BookingController extends GetxController {
   // List of all bookings
   final RxList<BookingModel> allBookings = <BookingModel>[].obs;
 
+  // Loading state for accept action
+  final RxMap<String, bool> acceptingBookings = <String, bool>{}.obs;
+
   // Get filtered bookings based on selected filter
   List<BookingModel> get filteredBookings {
     if (selectedFilter.value == 'all') {
@@ -33,25 +36,35 @@ class BookingController extends GetxController {
     selectedFilter.value = filter;
   }
 
-  // Accept booking
-  void acceptBooking(String bookingId) {
+  // Accept booking with loading
+  Future<void> acceptBooking(String bookingId) async {
+    // Set loading state
+    acceptingBookings[bookingId] = true;
+
+    // Wait for 2 seconds
+    await Future.delayed(Duration(seconds: 2));
+
     final index = allBookings.indexWhere((b) => b.id == bookingId);
     if (index != -1) {
       final booking = allBookings[index];
-      allBookings[index] = BookingModel(
-        id: booking.id,
-        serviceTitle: booking.serviceTitle,
-        address: booking.address,
+      allBookings[index] = booking.copyWith(
         status: 'accepted',
-        timeAgo: booking.timeAgo,
-        customerName: booking.customerName,
-        serviceIcon: booking.serviceIcon,
+        paymentMethod: 'cod',
+        paymentStatus: 'pending',
       );
       Get.snackbar('Success', 'Booking accepted successfully',
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: AppColors.greenColor,
           colorText: Colors.white);
     }
+
+    // Remove loading state
+    acceptingBookings.remove(bookingId);
+  }
+
+  // Check if booking is being accepted
+  bool isAccepting(String bookingId) {
+    return acceptingBookings[bookingId] ?? false;
   }
 
   // Reject booking
