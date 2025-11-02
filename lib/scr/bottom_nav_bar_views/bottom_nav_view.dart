@@ -1,5 +1,5 @@
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/home_views/booking_nav_view.dart';
+import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_nav_view.dart';
 import 'package:fingodriver/scr/home_views/home_view.dart';
 import 'package:fingodriver/scr/home_views/my_profile_view.dart';
 import 'package:fingodriver/scr/home_views/wallet_view.dart';
