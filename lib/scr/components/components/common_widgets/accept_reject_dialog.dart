@@ -67,29 +67,13 @@ void showAcceptRejectDialog({
                 children: [
                   // Cancel Button
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () => Get.back(),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height * 0.015,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: Colors.grey.shade300,
-                            width: 1,
-                          ),
-                        ),
-                        child: Center(
-                          child: BlackText(
-                            text: 'Cancel',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            textColor: AppColors.blackColor,
-                          ),
-                        ),
-                      ),
+                    child: OrangeButton(
+                        onTap: () => Get.back(),
+                        text: "cancel",
+                        color: AppColors.transparentColor,
+                       textColor: AppColors.orangeColor,
+                       borderColor: AppColors.orangeColor,
+                       borderRadius: 10,
                     ),
                   ),
 
@@ -97,51 +81,15 @@ void showAcceptRejectDialog({
 
                   // Accept/Reject Button
                   Expanded(
-                    child: GestureDetector(
+                    child: OrangeButton(
                       onTap: () {
                         Get.back();
                         onConfirm();
                       },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height * 0.015,
-                        ),
-                        decoration: BoxDecoration(
-                          color: isAccept
-                              ? AppColors.greenColor
-                              : AppColors.redColor,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                              color: (isAccept
-                                      ? AppColors.greenColor
-                                      : AppColors.redColor)
-                                  .withOpacity(0.3),
-                              spreadRadius: 1,
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              isAccept ? Icons.check : Icons.close,
-                              color: Colors.white,
-                              size: MediaQuery.of(context).size.width * 0.04,
-                            ),
-                            SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.02),
-                            BlackText(
-                              text: isAccept ? 'Accept' : 'Reject',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              textColor: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ),
+                      text: isAccept ? 'Accept' : 'Reject',
+                      color: AppColors.orangeColor,
+                      textColor: Colors.white,
+                      borderRadius: 10,
                     ),
                   ),
                 ],
