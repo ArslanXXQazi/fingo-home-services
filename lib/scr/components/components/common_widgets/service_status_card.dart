@@ -11,7 +11,6 @@ class ServiceStatusCard extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (c) {
         return Container(
-          margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
           padding: EdgeInsets.all(screenWidth * 0.04),
           decoration: BoxDecoration(
             color: AppColors.whiteColor,
