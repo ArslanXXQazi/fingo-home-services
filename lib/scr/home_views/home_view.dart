@@ -1,4 +1,5 @@
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingodriver/scr/components/components/common_widgets/customer_feedback_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -116,7 +117,21 @@ class HomeView extends StatelessWidget {
                 height: screenHeight*.003,
                 width: screenWidth*.25,
                 color: AppColors.orangeColor,
-              )
+              ),
+              SizedBox(height: screenHeight*.02),
+              // Feedback Cards
+              CustomerFeedbackCard(
+                customerName: 'Anonymous',
+                rating: 4,
+                reviewText: 'good work',
+                timeAgo: '21 hours ago',
+              ),
+              CustomerFeedbackCard(
+                customerName: 'John Doe',
+                rating: 5,
+                reviewText: 'Excellent service! Very satisfied.',
+                timeAgo: '2 days ago',
+              ),
 
 
           ],),

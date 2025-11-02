@@ -38,6 +38,7 @@ export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.
 export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_controller.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/booking_details_bottom_sheet.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/payment_received_dialog.dart';
+export 'package:fingodriver/scr/components/components/common_widgets/customer_feedback_card.dart';
 export 'package:fingodriver/scr/home_views/map_view.dart';
 export 'package:fingodriver/scr/home_views/map_controller/map_controller.dart';
 
