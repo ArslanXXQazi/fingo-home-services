@@ -2,6 +2,7 @@ import 'package:fingodriver/scr/components/components/constant/linker.dart';
 import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.dart';
 import 'package:fingodriver/scr/components/components/common_widgets/accept_reject_dialog.dart';
 import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_controller.dart';
+import 'package:fingodriver/scr/components/components/common_widgets/booking_details_bottom_sheet.dart';
 
 class BookingCard extends StatelessWidget {
   final BookingModel booking;
@@ -40,22 +41,29 @@ class BookingCard extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final statusColor = _getStatusColor(booking.status);
 
-    return Container(
-      margin: EdgeInsets.only(bottom: screenHeight * 0.02),
-      padding: EdgeInsets.all(screenWidth * 0.04),
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
+    return InkWell(
+      onTap: () {
+        showBookingDetailsBottomSheet(
+          context: context,
+          booking: booking,
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: screenHeight * 0.02),
+        padding: EdgeInsets.all(screenWidth * 0.04),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Top Row: Status Badge and Time
@@ -476,6 +484,7 @@ class BookingCard extends StatelessWidget {
             ),
           ],
         ],
+        ),
       ),
     );
   }

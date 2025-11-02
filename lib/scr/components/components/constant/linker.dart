@@ -36,5 +36,6 @@ export 'package:fingodriver/scr/components/components/common_widgets/booking_car
 export 'package:fingodriver/scr/components/components/common_widgets/accept_reject_dialog.dart';
 export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.dart';
 export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_controller.dart';
+export 'package:fingodriver/scr/components/components/common_widgets/booking_details_bottom_sheet.dart';
 
 

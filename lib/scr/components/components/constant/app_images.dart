@@ -82,4 +82,5 @@ class AppImages
   static final String bank = 'assets/bank.png';
   static final String logo = 'assets/logo.png';
   static final String serviceStatus = 'assets/serviceStaus.png';
+  static final String mapIcon = 'assets/mapIcon.png';
 }
