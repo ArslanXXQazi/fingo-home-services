@@ -157,4 +157,79 @@ class MapController extends GetxController {
   Future<void> refreshLocation() async {
     await getCurrentLocation();
   }
+
+  // Add destination marker from address
+  Future<void> addDestinationMarker(String address) async {
+    try {
+      // Convert address to coordinates
+      List<Location> locations = await locationFromAddress(address);
+      if (locations.isNotEmpty) {
+        Location location = locations[0];
+        final destinationLatLng = LatLng(location.latitude, location.longitude);
+        
+        const markerId = MarkerId('destination');
+        final marker = Marker(
+          markerId: markerId,
+          position: destinationLatLng,
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          infoWindow: InfoWindow(
+            title: 'Destination',
+            snippet: address,
+          ),
+        );
+        
+        markers[markerId] = marker;
+        markers.refresh();
+        
+        // Move camera to show both markers
+        _moveCameraToShowBothMarkers(destinationLatLng);
+      }
+    } catch (e) {
+      print('Error adding destination marker: $e');
+      Get.snackbar(
+        'Error',
+        'Could not find location for address: $address',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  // Move camera to show both current location and destination
+  void _moveCameraToShowBothMarkers(LatLng destinationLatLng) {
+    if (mapController != null) {
+      final currentLatLng = LatLng(
+        currentPosition.value.latitude,
+        currentPosition.value.longitude,
+      );
+      
+      // Calculate bounds to include both markers
+      double minLat = currentLatLng.latitude < destinationLatLng.latitude
+          ? currentLatLng.latitude
+          : destinationLatLng.latitude;
+      double maxLat = currentLatLng.latitude > destinationLatLng.latitude
+          ? currentLatLng.latitude
+          : destinationLatLng.latitude;
+      double minLng = currentLatLng.longitude < destinationLatLng.longitude
+          ? currentLatLng.longitude
+          : destinationLatLng.longitude;
+      double maxLng = currentLatLng.longitude > destinationLatLng.longitude
+          ? currentLatLng.longitude
+          : destinationLatLng.longitude;
+      
+      final bounds = LatLngBounds(
+        southwest: LatLng(minLat, minLng),
+        northeast: LatLng(maxLat, maxLng),
+      );
+      
+      mapController!.animateCamera(
+        CameraUpdate.newLatLngBounds(bounds, 100),
+      );
+    }
+  }
+
+  // Clear all markers
+  void clearMarkers() {
+    markers.clear();
+    markers.refresh();
+  }
 }

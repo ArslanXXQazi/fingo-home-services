@@ -115,7 +115,7 @@ class BookingCard extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        // Navigate functionality
+                        Get.toNamed(AppRoutes.mapView, arguments: booking);
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(

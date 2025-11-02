@@ -1,0 +1,95 @@
+import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
+import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingodriver/scr/home_views/map_controller/map_controller.dart';
+import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.dart';
+
+class MapView extends StatelessWidget {
+  const MapView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Get booking from arguments if provided
+    final booking = Get.arguments as BookingModel?;
+    
+    return _MapViewState(booking: booking);
+  }
+}
+
+class _MapViewState extends StatefulWidget {
+  final BookingModel? booking;
+
+  const _MapViewState({
+    this.booking,
+  });
+
+  @override
+  State<_MapViewState> createState() => _MapViewStateState();
+}
+
+class _MapViewStateState extends State<_MapViewState> {
+  late MapController mapController;
+
+  @override
+  void initState() {
+    super.initState();
+    mapController = Get.put(MapController());
+    
+    // If booking is provided, add destination marker after map is ready
+    if (widget.booking != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Future.delayed(const Duration(milliseconds: 1000), () {
+          mapController.addDestinationMarker(widget.booking!.address);
+        });
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    mapController.clearMarkers();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      backgroundColor: AppColors.whiteColor,
+      appBar: CustomAppBar(title: "Tracking"),
+      body: Obx(() {
+        if (mapController.isLoading.value) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: AppColors.orangeColor,
+            ),
+          );
+        }
+
+        return Stack(
+          children: [
+            // Google Map
+            GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(
+                  mapController.currentPosition.value.latitude,
+                  mapController.currentPosition.value.longitude,
+                ),
+                zoom: 15,
+              ),
+              markers: mapController.markers.values.toSet(),
+              myLocationEnabled: true,
+              myLocationButtonEnabled: false,
+              mapType: MapType.normal,
+              onMapCreated: mapController.onMapCreated,
+              zoomControlsEnabled: false,
+            ),
+            
+          ],
+        );
+      }),
+    );
+  }
+}
+

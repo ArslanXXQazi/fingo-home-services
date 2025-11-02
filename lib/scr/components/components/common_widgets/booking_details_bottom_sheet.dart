@@ -211,7 +211,10 @@ class BookingDetailsBottomSheet extends StatelessWidget {
 
             // Open Map Button
             OrangeButton(
-                onTap: (){},
+                onTap: () {
+                  Navigator.pop(context);
+                  Get.toNamed(AppRoutes.mapView, arguments: booking);
+                },
                 text: "Open Map",
                 image: AppImages.mapIcon,
                 borderRadius: 10,
