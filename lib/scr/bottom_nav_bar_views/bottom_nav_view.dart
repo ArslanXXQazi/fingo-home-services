@@ -1,5 +1,6 @@
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 import 'package:fingodriver/scr/home_views/my_profile_view.dart';
+import 'package:fingodriver/scr/home_views/wallet_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 class BottomNavView extends StatelessWidget {
@@ -16,7 +17,7 @@ class BottomNavView extends StatelessWidget {
           children: [
             Center(child: Text('Home Page')),
             Center(child: Text('Booking Page')),
-            Center(child: Text('Wallet Page')),
+            WalletView(),
             MyProfileView(),
           ],
         );

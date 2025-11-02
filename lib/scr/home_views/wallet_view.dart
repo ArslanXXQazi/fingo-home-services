@@ -230,6 +230,7 @@ class _WalletViewState extends State<WalletView> with SingleTickerProviderStateM
                 ],
               ),
             ),
+            SizedBox(height: screenHeight*.02),
           ],
         ),
       ),
