@@ -111,6 +111,12 @@ class HomeView extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: screenHeight*.01),
+              Container(
+                height: screenHeight*.003,
+                width: screenWidth*.25,
+                color: AppColors.orangeColor,
+              )
 
 
           ],),

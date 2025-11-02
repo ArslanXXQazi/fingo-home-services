@@ -33,13 +33,16 @@ class _MapViewStateState extends State<_MapViewState> {
   void initState() {
     super.initState();
     mapController = Get.put(MapController());
+  }
+
+  // Callback when map is created
+  void _onMapCreated(GoogleMapController controller) {
+    mapController.onMapCreated(controller);
     
     // If booking is provided, add destination marker after map is ready
     if (widget.booking != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Future.delayed(const Duration(milliseconds: 1000), () {
-          mapController.addDestinationMarker(widget.booking!.address);
-        });
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        mapController.addDestinationMarker(widget.booking!.address);
       });
     }
   }
@@ -52,9 +55,6 @@ class _MapViewStateState extends State<_MapViewState> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       appBar: CustomAppBar(title: "Tracking"),
@@ -82,7 +82,7 @@ class _MapViewStateState extends State<_MapViewState> {
               myLocationEnabled: true,
               myLocationButtonEnabled: false,
               mapType: MapType.normal,
-              onMapCreated: mapController.onMapCreated,
+              onMapCreated: _onMapCreated,
               zoomControlsEnabled: false,
             ),
             
@@ -92,4 +92,3 @@ class _MapViewStateState extends State<_MapViewState> {
     );
   }
 }
-
