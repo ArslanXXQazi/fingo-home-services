@@ -400,59 +400,49 @@ class BookingCard extends StatelessWidget {
               final hasArrived = controller != null &&
                   controller!.hasArrived(booking.id);
 
-              return GestureDetector(
-                onTap: isLoading
-                    ? null
-                    : () {
-                        if (hasArrived) {
-                          // Mark as completed
-                          controller?.markAsCompleted(booking.id);
-                        } else {
-                          // Arrival at destination
-                          controller?.arrivalAtDestination(booking.id);
-                        }
-                      },
-                child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
-                  decoration: BoxDecoration(
-                    color: isLoading || hasArrived
-                        ? AppColors.greenColor
-                        : AppColors.orangeColor,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: (isLoading || hasArrived
-                                ? AppColors.greenColor
-                                : AppColors.orangeColor)
-                            .withOpacity(0.3),
-                        spreadRadius: 1,
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
+              if (isLoading) {
+                return GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    width: double.infinity,
+                    height: screenHeight * 0.05,
+                    decoration: BoxDecoration(
+                      color: AppColors.orangeColor,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: SizedBox(
+                        width: screenWidth * 0.05,
+                        height: screenWidth * 0.05,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white),
+                        ),
                       ),
-                    ],
+                    ),
                   ),
-                  child: Center(
-                    child: isLoading
-                        ? SizedBox(
-                            width: screenWidth * 0.05,
-                            height: screenWidth * 0.05,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.white),
-                            ),
-                          )
-                        : BlackText(
-                            text: hasArrived
-                                ? 'Mark as Completed'
-                                : 'Arrival at Destination',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            textColor: Colors.white,
-                          ),
-                  ),
-                ),
+                );
+              }
+
+              return OrangeButton(
+                onTap: () {
+                  if (hasArrived) {
+                    // Mark as completed
+                    controller?.markAsCompleted(booking.id);
+                  } else {
+                    // Arrival at destination
+                    controller?.arrivalAtDestination(booking.id);
+                  }
+                },
+                text: hasArrived
+                    ? 'Mark as Completed'
+                    : 'Arrival at Destination',
+                color: hasArrived
+                    ? AppColors.greenColor
+                    : AppColors.orangeColor,
+                textColor: Colors.white,
+                borderRadius: 10,
               );
             }),
           ],
