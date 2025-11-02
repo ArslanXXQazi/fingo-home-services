@@ -31,5 +31,10 @@ export 'package:fingodriver/scr/auth_view/sign_up_view.dart';
 export 'package:fingodriver/scr/components/components/constant/linker.dart';
 export 'package:fingodriver/scr/starting_view/on_boarding_view.dart';
 export 'package:fingodriver/scr/starting_view/splash_view.dart';
+export 'package:fingodriver/scr/components/components/common_widgets/booking_filter_buttons.dart';
+export 'package:fingodriver/scr/components/components/common_widgets/booking_card.dart';
+export 'package:fingodriver/scr/components/components/common_widgets/accept_reject_dialog.dart';
+export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.dart';
+export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_controller.dart';
 
 
