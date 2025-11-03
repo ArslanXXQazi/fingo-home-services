@@ -35,7 +35,7 @@ class _SplashViewState extends State<SplashView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
-           Image.asset(AppImages.logo,width: screenWith),
+           Image.asset(AppImages.splashLogo,width: screenWith*.7),
 
           ],),
       ),
