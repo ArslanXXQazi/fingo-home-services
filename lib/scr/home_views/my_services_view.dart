@@ -1,4 +1,5 @@
 import 'package:fingodriver/scr/components/components/common_widgets/custom-appbar_2nd.dart';
+import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
 import 'package:fingodriver/scr/components/components/common_widgets/service_card.dart';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 
@@ -12,7 +13,7 @@ class MyServicesView extends StatelessWidget {
     final HomeController homeController = Get.find<HomeController>();
 
     return Scaffold(
-      appBar: CustomAppBar2nd(title: "MY SERVICES"),
+      appBar: CustomAppBar(title: "MY SERVICES"),
       backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: Obx(() {
