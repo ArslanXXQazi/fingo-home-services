@@ -1,5 +1,6 @@
 import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
 import 'package:fingodriver/scr/components/components/common_widgets/service_card.dart';
+import 'package:fingodriver/scr/components/components/common_widgets/edit_service_dialog.dart';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 
 class MyServicesView extends StatelessWidget {
@@ -63,14 +64,15 @@ class MyServicesView extends StatelessWidget {
                       SizedBox(height: screenHeight * 0.02),
                       ...homeController.userServices.asMap().entries.map((entry) {
                         final index = entry.key;
-                        final service = entry.value;
-                        final serviceKey = service['serviceKey'] as String;
-                        final serviceName = service['serviceName'] as String;
-                        final subCategory = service['subCategory'] as String;
-                        final iconPath = homeController.getServiceIcon(serviceKey);
-
                         return Obx(() {
-                          final isEnabled = homeController.userServices[index]['isEnabled'] as bool? ?? true;
+                          final service = homeController.userServices[index];
+                          final serviceKey = service['serviceKey'] as String;
+                          final serviceName = service['serviceName'] as String;
+                          final subCategory = service['subCategory'] as String;
+                          final iconPath = homeController.getServiceIcon(serviceKey);
+                          final isEnabled = service['isEnabled'] as bool? ?? true;
+                          final price = service['price'] as String? ?? '';
+                          
                           return ServiceCard(
                             serviceName: serviceName,
                             subCategory: subCategory,
@@ -78,6 +80,23 @@ class MyServicesView extends StatelessWidget {
                             isEnabled: isEnabled,
                             onToggle: () {
                               homeController.toggleUserServiceStatus(index);
+                            },
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => EditServiceDialog(
+                                  serviceName: serviceName,
+                                  subCategory: subCategory,
+                                  initialPrice: price,
+                                  onSave: (updatedPrice) {
+                                    homeController.updateUserServicePrice(
+                                      index,
+                                      updatedPrice,
+                                    );
+                                    Get.snackbar('Success', 'Price updated successfully');
+                                  },
+                                ),
+                              );
                             },
                           );
                         });

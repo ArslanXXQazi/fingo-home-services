@@ -6,6 +6,7 @@ class ServiceCard extends StatelessWidget {
   final String iconPath;
   final bool isEnabled;
   final VoidCallback onToggle;
+  final VoidCallback? onTap;
 
   const ServiceCard({
     Key? key,
@@ -14,6 +15,7 @@ class ServiceCard extends StatelessWidget {
     required this.iconPath,
     required this.isEnabled,
     required this.onToggle,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -21,22 +23,25 @@ class ServiceCard extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Container(
-      margin: EdgeInsets.only(bottom: screenHeight * 0.02),
-      padding: EdgeInsets.all(screenWidth * 0.04),
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            spreadRadius: 1,
-            offset: Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        margin: EdgeInsets.only(bottom: screenHeight * 0.02),
+        padding: EdgeInsets.all(screenWidth * 0.04),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 1,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Service Icon
@@ -91,17 +96,23 @@ class ServiceCard extends StatelessWidget {
             ),
           ),
           // Switch Button
-          Switch(
-            value: isEnabled,
-            onChanged: (value) {
-              onToggle();
+          GestureDetector(
+            onTap: () {
+              // Stop tap event from propagating to parent
             },
-            activeColor: AppColors.whiteColor,
-            activeTrackColor: AppColors.orangeColor,
-            inactiveThumbColor: Colors.black,
-            inactiveTrackColor: AppColors.backGroundGrey,
+            child: Switch(
+              value: isEnabled,
+              onChanged: (value) {
+                onToggle();
+              },
+              activeColor: AppColors.whiteColor,
+              activeTrackColor: AppColors.orangeColor,
+              inactiveThumbColor: Colors.black,
+              inactiveTrackColor: AppColors.backGroundGrey,
+            ),
           ),
         ],
+      ),
       ),
     );
   }

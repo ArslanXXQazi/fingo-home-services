@@ -324,6 +324,16 @@ class HomeController extends GetxController {
     }
   }
 
+  //===========>>> Update User Service Price
+  void updateUserServicePrice(int index, String price) {
+    if (index >= 0 && index < userServices.length) {
+      userServices[index]['price'] = price;
+      // Force update by assigning a new list reference
+      final updatedList = List<Map<String, dynamic>>.from(userServices);
+      userServices.assignAll(updatedList);
+    }
+  }
+
   @override
   void onClose() {
     // Dispose controllers when the controller is disposed

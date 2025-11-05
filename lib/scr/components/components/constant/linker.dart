@@ -49,5 +49,6 @@ export 'package:fingodriver/scr/controllers/edit_profile_controller.dart';
 export 'package:fingodriver/scr/home_views/my_services_view.dart';
 export 'package:fingodriver/scr/home_views/history_view.dart';
 export 'package:fingodriver/scr/home_views/document_view.dart';
+export 'package:fingodriver/scr/components/components/common_widgets/edit_service_dialog.dart';
 
 
