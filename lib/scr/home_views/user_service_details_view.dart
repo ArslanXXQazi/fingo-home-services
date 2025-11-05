@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 
 class UserServiceDetailsView extends StatelessWidget {
   const UserServiceDetailsView({super.key});
@@ -155,10 +154,8 @@ class UserServiceDetailsView extends StatelessWidget {
                               SizedBox(height: screenHeight*.025),
                               OrangeButton(
                                   onTap: (){
-                                    final form = authController.userDetailsFormKey.currentState;
-                                    if (form != null && form.validate()) {
-                                      authController.goToServiceStep();
-                                    }
+                                    // Allow navigation even if form is empty
+                                    authController.goToServiceStep();
                                   },
                                   text: "Next"
                               ),
@@ -173,91 +170,84 @@ class UserServiceDetailsView extends StatelessWidget {
                             children: [
                               SizedBox(height: screenHeight*.015),
                               BlackText(text: "Select Service", fontSize: 15, fontWeight: FontWeight.w700,),
-                              SizedBox(height: screenHeight*.01),
-                              Obx((){
+                              SizedBox(height: screenHeight*.02),
+                              // Services Grid
+                              Obx(() {
                                 final services = homeController.getAllServices();
-                                final value = homeController.selectedService.value.isNotEmpty 
-                                    ? homeController.selectedService.value 
-                                    : null;
-                                return DropdownButtonFormField2<String>(
-                                  isExpanded: true,
-                                  value: value,
-                                  validator: (v)=> v==null || v.isEmpty ? 'Please select a service' : null,
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                                    filled: true,
-                                    fillColor: const Color(0XFF6B6B6B38).withOpacity(.18),
-                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                  ),
-                                  hint: const Text('Select service'),
-                                  items: services.entries.map((entry) => 
-                                    DropdownMenuItem(value: entry.key, child: Text(entry.value))
-                                  ).toList(),
-                                  onChanged: (v){
-                                    if (v != null) {
-                                      homeController.setService(v);
-                                    }
-                                  },
-                                  dropdownStyleData: DropdownStyleData(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    maxHeight: screenHeight * .35,
-                                  ),
-                                  menuItemStyleData: const MenuItemStyleData(
-                                    height: 44,
-                                  ),
-                                  iconStyleData: const IconStyleData(
-                                    icon: Icon(Icons.keyboard_arrow_down_rounded),
-                                  ),
-                                );
-                              }),
-
-                              SizedBox(height: screenHeight*.015),
-                              Obx((){
-                                // Get sub-categories based on selected service
-                                final subCategories = homeController.getSubCategoriesForService(homeController.selectedService.value);
-                                if (homeController.selectedService.value.isEmpty) return const SizedBox.shrink();
+                                final selectedService = homeController.selectedService.value;
                                 
-                                final subCategoryValue = homeController.selectedSubCategory.value.isEmpty ? null : homeController.selectedSubCategory.value;
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    BlackText(text: "Select Sub-Category", fontSize: 12, fontWeight: FontWeight.w400),
-                                    SizedBox(height: screenHeight*.008),
-                                    DropdownButtonFormField2<String>(
-                                      isExpanded: true,
-                                      value: subCategoryValue,
-                                      validator: (v)=> v==null || v.isEmpty ? 'Please select a sub-category' : null,
-                                      decoration: InputDecoration(
-                                        contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                                        filled: true,
-                                        fillColor: const Color(0XFF6B6B6B38).withOpacity(.18),
-                                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                      ),
-                                      hint: const Text('Select sub-category'),
-                                      items: subCategories.map((e)=> DropdownMenuItem(value: e, child: Text(e))).toList(),
-                                      onChanged: (v){ 
-                                        if (v != null) {
-                                          homeController.setSubCategory(v);
-                                        }
+                                return GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    crossAxisSpacing: screenWidth * 0.025,
+                                    mainAxisSpacing: screenHeight * 0.005,
+                                    childAspectRatio: 0.95,
+                                  ),
+                                  itemCount: services.length,
+                                  itemBuilder: (context, index) {
+                                    final serviceEntry = services.entries.elementAt(index);
+                                    final serviceKey = serviceEntry.key;
+                                    final serviceName = serviceEntry.value;
+                                    final iconPath = homeController.getServiceIcon(serviceKey);
+                                    final isSelected = selectedService == serviceKey;
+                                    
+                                    return GestureDetector(
+                                      onTap: () {
+                                        homeController.setService(serviceKey);
+                                        Get.toNamed(AppRoutes.subCategorySelectionView);
                                       },
-                                      dropdownStyleData: DropdownStyleData(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        maxHeight: screenHeight * .35,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Container(
+                                            width: screenWidth * 0.16,
+                                            height: screenWidth * 0.16,
+                                            decoration: BoxDecoration(
+                                              color: isSelected 
+                                                  ? AppColors.orangeColor.withOpacity(0.2) 
+                                                  : AppColors.orangeColor.withOpacity(0.1),
+                                              shape: BoxShape.circle,
+                                              border: isSelected 
+                                                  ? Border.all(
+                                                      color: AppColors.orangeColor,
+                                                      width: 2,
+                                                    )
+                                                  : null,
+                                            ),
+                                            child: Center(
+                                              child: Image.asset(
+                                                iconPath,
+                                                width: screenWidth * 0.08,
+                                                height: screenWidth * 0.08,
+                                                color: AppColors.orangeColor,
+                                                errorBuilder: (context, _, __) => Icon(
+                                                  Icons.cleaning_services,
+                                                  color: AppColors.orangeColor,
+                                                  size: screenWidth * 0.08,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 4),
+                                          BlackText(
+                                            text: serviceName,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
+                                            textColor: isSelected ? AppColors.orangeColor : AppColors.greyColor,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
                                       ),
-                                      menuItemStyleData: const MenuItemStyleData(height: 44),
-                                      iconStyleData: const IconStyleData(icon: Icon(Icons.keyboard_arrow_down_rounded)),
-                                    ),
-                                  ],
+                                    );
+                                  },
                                 );
                               }),
 
-                              SizedBox(height: screenHeight*.025),
+                              SizedBox(height: screenHeight*.03),
                               Row(
                                 children: [
                                   Expanded(
@@ -270,6 +260,14 @@ class UserServiceDetailsView extends StatelessWidget {
                                   Expanded(
                                     child: OrangeButton(
                                         onTap: (){
+                                          if (homeController.selectedService.value.isEmpty) {
+                                            Get.snackbar('Error', 'Please select a service');
+                                            return;
+                                          }
+                                          if (homeController.selectedSubCategory.value.isEmpty) {
+                                            Get.snackbar('Error', 'Please select a sub-category');
+                                            return;
+                                          }
                                           final form = authController.userServiceDetailsFormKey.currentState;
                                           if (form != null && form.validate()) {
                                             Get.snackbar('Success', 'Details submitted');

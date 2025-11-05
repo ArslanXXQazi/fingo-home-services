@@ -105,11 +105,13 @@ class HomeController extends GetxController {
   void setService(String service) {
     selectedService.value = service;
     selectedSubCategory.value = ''; // Reset sub-category when service changes
+    update(); // Notify GetBuilder listeners
   }
 
   //===========>>> Set Selected Sub-Category
   void setSubCategory(String subCategory) {
     selectedSubCategory.value = subCategory;
+    update(); // Notify GetBuilder listeners
   }
 
   //===========>>> Get Sub-Categories for Selected Service
@@ -235,6 +237,51 @@ class HomeController extends GetxController {
       'gardening': 'Gardening Services',
       'elderly_care': 'Elderly Care / Baby Sitting',
     };
+  }
+
+  //===========>>> Get Service Icon
+  String getServiceIcon(String serviceKey) {
+    switch (serviceKey) {
+      case 'cleaning':
+        return AppImages.houseCleaning;
+      case 'electrician':
+        return AppImages.electrician;
+      case 'plumber':
+        return AppImages.plumber;
+      case 'appliance':
+        return AppImages.appliance;
+      case 'pest_control':
+        return AppImages.pestControl;
+      case 'carpenter':
+        return AppImages.carpenter;
+      case 'painting':
+        return AppImages.homePainting;
+      case 'salon':
+        return AppImages.salonServices;
+      case 'fitness':
+        return AppImages.yoga;
+      case 'packers_movers':
+        return AppImages.packersMover;
+      case 'tutors':
+        return AppImages.homeschooling;
+      case 'laundry':
+        return AppImages.laundryServices;
+      case 'cctv_security':
+        return AppImages.cctvCamera;
+      case 'gardening':
+        return AppImages.gardeningServices;
+      case 'elderly_care':
+        return AppImages.baby;
+      default:
+        return AppImages.home;
+    }
+  }
+
+  //===========>>> Get Sub-Category Icon (Random icons for now, will be replaced by API)
+  String getSubCategoryIcon(String serviceKey, String subCategory) {
+    // For now, return the service icon as sub-category icon
+    // Later this will be replaced by API data
+    return getServiceIcon(serviceKey);
   }
 
   @override

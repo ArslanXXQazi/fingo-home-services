@@ -3,7 +3,8 @@ import '../constant/linker.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const CustomAppBar({super.key, required this.title});
+  final double? fontSize;
+  const CustomAppBar({super.key, required this.title,this.fontSize});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -20,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: BlackText(
         text: title,
-        fontSize: 30,
+        fontSize: fontSize ?? 30,
         fontFamily: 'a',
         fontWeight: FontWeight.w400,
         textColor: AppColors.orangeColor,
