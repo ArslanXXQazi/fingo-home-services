@@ -46,6 +46,8 @@ class AppRoutes {
   static  final String mapView = '/mapView';
   static  final String userServiceDetailsView = '/userServiceDetailsView';
   static  final String subCategorySelectionView = '/subCategorySelectionView';
+  static  final String documentView = '/documentView';
+  static  final String editProfileView = '/editProfileView';
 
   static final routes = [
     GetPage(name: splashView, page: ()=>SplashView()),

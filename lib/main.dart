@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.userServiceDetailsView,
+      initialRoute: AppRoutes.bottomNavView,
       getPages: AppRoutes.routes,
       initialBinding: BindingsBuilder((){
         Get.put(AuthController());
