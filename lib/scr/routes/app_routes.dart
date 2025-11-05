@@ -18,6 +18,7 @@ import 'package:fingodriver/scr/home_views/withdraw_method.dart';
 import 'package:fingodriver/scr/home_views/map_view.dart';
 import 'package:fingodriver/scr/home_views/user_service_details_view.dart';
 import 'package:fingodriver/scr/home_views/sub_category_selection_view.dart';
+import 'package:fingodriver/scr/home_views/edit_profile_view.dart';
 
 import '../components/components/constant/linker.dart';
 
@@ -73,6 +74,7 @@ class AppRoutes {
     GetPage(name: mapView, page: ()=>MapView()),
     GetPage(name: userServiceDetailsView, page: ()=>UserServiceDetailsView()),
     GetPage(name: subCategorySelectionView, page: ()=>SubCategorySelectionView()),
+    GetPage(name: editProfileView, page: ()=>EditProfileView()),
   ];
 
 
