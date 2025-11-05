@@ -12,7 +12,6 @@ class HistoryView extends StatelessWidget {
       'location': 'Lekki Phase 1, Lagos',
       'price': '25,000',
       'dateTime': 'Nov 10, 2025 • 2:30 PM',
-      'status': 'Completed',
     },
     {
       'serviceName': 'AC Repair & Maintenance',
@@ -20,7 +19,6 @@ class HistoryView extends StatelessWidget {
       'location': 'Victoria Island, Lagos',
       'price': '18,500',
       'dateTime': 'Nov 09, 2025 • 11:15 AM',
-      'status': 'Completed',
     },
     {
       'serviceName': 'Plumbing - Pipe Fix',
@@ -28,7 +26,6 @@ class HistoryView extends StatelessWidget {
       'location': 'Ikeja GRA, Lagos',
       'price': '9,800',
       'dateTime': 'Nov 08, 2025 • 4:45 PM',
-      'status': 'Cancelled',
     },
     {
       'serviceName': 'Electrical Wiring Check',
@@ -36,7 +33,6 @@ class HistoryView extends StatelessWidget {
       'location': 'Yaba Tech Quarters, Lagos',
       'price': '14,200',
       'dateTime': 'Nov 07, 2025 • 10:00 AM',
-      'status': 'Pending',
     },
   ];
 
