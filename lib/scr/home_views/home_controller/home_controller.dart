@@ -36,6 +36,9 @@ class HomeController extends GetxController {
   // User Service Selection
   final RxString selectedService = ''.obs;
   final RxString selectedSubCategory = ''.obs;
+  
+  // User Services List (stores services added by user)
+  final RxList<Map<String, dynamic>> userServices = <Map<String, dynamic>>[].obs;
 
   @override
   void onInit() {
@@ -282,6 +285,31 @@ class HomeController extends GetxController {
     // For now, return the service icon as sub-category icon
     // Later this will be replaced by API data
     return getServiceIcon(serviceKey);
+  }
+
+  //===========>>> Add User Service
+  void addUserService(String serviceKey, String serviceName, String subCategory, String experienceYears, String experienceMonths) {
+    // Check if service already exists
+    bool serviceExists = userServices.any((service) => 
+      service['serviceKey'] == serviceKey && service['subCategory'] == subCategory
+    );
+    
+    if (!serviceExists) {
+      userServices.add({
+        'serviceKey': serviceKey,
+        'serviceName': serviceName,
+        'subCategory': subCategory,
+        'experienceYears': experienceYears,
+        'experienceMonths': experienceMonths,
+      });
+    }
+  }
+
+  //===========>>> Remove User Service
+  void removeUserService(int index) {
+    if (index >= 0 && index < userServices.length) {
+      userServices.removeAt(index);
+    }
   }
 
   @override

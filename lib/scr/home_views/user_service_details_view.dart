@@ -511,7 +511,28 @@ class UserServiceDetailsView extends StatelessWidget {
                                           }
                                           final form = authController.userServiceDetailsFormKey.currentState;
                                           if (form != null && form.validate()) {
-                                            Get.snackbar('Success', 'Details submitted');
+                                            // Save service to HomeController
+                                            final serviceKey = homeController.selectedService.value;
+                                            final serviceName = homeController.getAllServices()[serviceKey] ?? '';
+                                            final subCategory = homeController.selectedSubCategory.value;
+                                            final experienceYears = authController.selectedExperienceYears.value;
+                                            final experienceMonths = authController.selectedExperienceMonths.value;
+                                            
+                                            homeController.addUserService(
+                                              serviceKey,
+                                              serviceName,
+                                              subCategory,
+                                              experienceYears,
+                                              experienceMonths,
+                                            );
+                                            
+                                            // Reset selections
+                                            homeController.selectedService.value = '';
+                                            homeController.selectedSubCategory.value = '';
+                                            authController.selectedExperienceYears.value = '0';
+                                            authController.selectedExperienceMonths.value = '0';
+                                            
+                                            Get.snackbar('Success', 'Service added successfully');
                                             Get.toNamed(AppRoutes.bottomNavView);
                                           }
                                         },

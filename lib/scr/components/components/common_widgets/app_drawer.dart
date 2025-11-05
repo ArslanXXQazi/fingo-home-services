@@ -68,6 +68,14 @@ class AppDrawer extends StatelessWidget {
                         },
                       ),
 
+                      _DrawerItem(
+                        icon: AppImages.myServices,
+                        title: "My Services",
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          Get.toNamed(AppRoutes.myServicesView);
+                        },
+                      ),
 
                       _DrawerItem(
                         icon: AppImages.orders,

@@ -19,6 +19,7 @@ import 'package:fingodriver/scr/home_views/map_view.dart';
 import 'package:fingodriver/scr/home_views/user_service_details_view.dart';
 import 'package:fingodriver/scr/home_views/sub_category_selection_view.dart';
 import 'package:fingodriver/scr/home_views/edit_profile_view.dart';
+import 'package:fingodriver/scr/home_views/my_services_view.dart';
 
 import '../components/components/constant/linker.dart';
 
@@ -49,6 +50,7 @@ class AppRoutes {
   static  final String subCategorySelectionView = '/subCategorySelectionView';
   static  final String documentView = '/documentView';
   static  final String editProfileView = '/editProfileView';
+  static  final String myServicesView = '/myServicesView';
 
   static final routes = [
     GetPage(name: splashView, page: ()=>SplashView()),
@@ -75,6 +77,7 @@ class AppRoutes {
     GetPage(name: userServiceDetailsView, page: ()=>UserServiceDetailsView()),
     GetPage(name: subCategorySelectionView, page: ()=>SubCategorySelectionView()),
     GetPage(name: editProfileView, page: ()=>EditProfileView()),
+    GetPage(name: myServicesView, page: ()=>MyServicesView()),
   ];
 
 

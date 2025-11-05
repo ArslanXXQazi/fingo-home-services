@@ -22,6 +22,7 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/social_login_buttons.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/text_feild_widget.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/gender_selector.dart';
+export 'package:fingodriver/scr/components/components/common_widgets/service_card.dart';
 export 'package:intl_phone_field/intl_phone_field.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/otp_field_widget.dart';
 export 'package:fingodriver/scr/home_views/home_controller/home_controller.dart';
@@ -44,5 +45,6 @@ export 'package:fingodriver/scr/home_views/map_view.dart';
 export 'package:fingodriver/scr/home_views/map_controller/map_controller.dart';
 export 'package:fingodriver/scr/home_views/edit_profile_view.dart';
 export 'package:fingodriver/scr/home_views/controllers/edit_profile_controller.dart';
+export 'package:fingodriver/scr/home_views/my_services_view.dart';
 
 
