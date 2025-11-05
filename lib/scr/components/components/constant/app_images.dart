@@ -103,5 +103,6 @@ class AppImages
   static final String gardeningServices = 'assets/gardeningServices.png';
   static final String baby = 'assets/baby.png';
   static final String myServices = 'assets/myServices.png';
+  static final String historyIcon = 'assets/historyIcon.png';
 
 }
