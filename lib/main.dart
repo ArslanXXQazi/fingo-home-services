@@ -1,3 +1,4 @@
+import 'package:fingodriver/scr/components/components/common_widgets/custom_parent_widget.dart';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       debugShowCheckedModeBanner: false,
+      //home: CustomParentWidget(),
       initialRoute: AppRoutes.bottomNavView,
       getPages: AppRoutes.routes,
       initialBinding: BindingsBuilder((){
