@@ -78,6 +78,15 @@ class AppDrawer extends StatelessWidget {
                       ),
 
                       _DrawerItem(
+                        icon: AppImages.historyIcon,
+                        title: "History",
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          Get.toNamed(AppRoutes.historyView);
+                        },
+                      ),
+
+                      _DrawerItem(
                         icon: AppImages.orders,
                         title: "Orders",
                         onTap: () {
