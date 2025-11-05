@@ -1,6 +1,8 @@
 
 
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class AuthController extends GetxController {
   final emailController = TextEditingController();
@@ -24,6 +26,18 @@ class AuthController extends GetxController {
   var isPasswordVisible = false.obs;
   var timerSeconds = 139.obs; // 2:19 in seconds
   var canResend = false.obs;
+
+  // User Details (for Home Services)
+  final userNameController = TextEditingController();
+  final userEmailController = TextEditingController();
+  final userPhoneController = TextEditingController();
+  final userAddressController = TextEditingController();
+  final userCnicController = TextEditingController();
+  final userDetailsFormKey = GlobalKey<FormState>();
+  final userServiceDetailsFormKey = GlobalKey<FormState>();
+  var userServiceStep = 1.obs; // 1 = User Details, 2 = Service Selection
+  final Rxn<XFile> userCnicFront = Rxn<XFile>();
+  final Rxn<XFile> userCnicBack = Rxn<XFile>();
 
   @override
   void onInit() {
@@ -115,7 +129,42 @@ class AuthController extends GetxController {
     return null;
   }
 
+  String? validateRequired(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'This field is required';
+    }
+    return null;
+  }
 
+  //===========>>> User Service Step Navigation
+  void goToServiceStep() {
+    userServiceStep.value = 2;
+  }
+
+  void backToUserStep() {
+    userServiceStep.value = 1;
+  }
+
+  //===========>>> Image Picker for User
+  Future<void> pickImage(String key) async {
+    try {
+      final ImagePicker picker = ImagePicker();
+      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+      
+      if (image != null) {
+        switch (key) {
+          case 'cnicFront':
+            userCnicFront.value = image;
+            break;
+          case 'cnicBack':
+            userCnicBack.value = image;
+            break;
+        }
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to pick image: $e');
+    }
+  }
 
   @override
   void onClose() {
@@ -129,6 +178,11 @@ class AuthController extends GetxController {
     otpController4.dispose();
     otpController5.dispose();
     otpController6.dispose();
+    userNameController.dispose();
+    userEmailController.dispose();
+    userPhoneController.dispose();
+    userAddressController.dispose();
+    userCnicController.dispose();
     super.onClose();
   }
 }

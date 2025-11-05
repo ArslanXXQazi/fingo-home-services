@@ -222,7 +222,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
 
                                 if (otp.length == 6) {
                                   Get.snackbar('Success', 'OTP verified successfully');
-                                  // Navigate to next screen or complete registration
+                                  Get.toNamed(AppRoutes.userServiceDetailsView);
                                 } else {
                                   Get.snackbar('Error', 'Please enter complete OTP');
                                 }

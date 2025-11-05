@@ -33,6 +33,10 @@ class HomeController extends GetxController {
   final TextEditingController accountNumberController = TextEditingController();
   final TextEditingController otherInfoController = TextEditingController();
 
+  // User Service Selection
+  final RxString selectedService = ''.obs;
+  final RxString selectedSubCategory = ''.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -95,6 +99,142 @@ class HomeController extends GetxController {
   void toggleServiceStatus() {
     isServiceEnabled.value = !isServiceEnabled.value;
     update();
+  }
+
+  //===========>>> Set Selected Service
+  void setService(String service) {
+    selectedService.value = service;
+    selectedSubCategory.value = ''; // Reset sub-category when service changes
+  }
+
+  //===========>>> Set Selected Sub-Category
+  void setSubCategory(String subCategory) {
+    selectedSubCategory.value = subCategory;
+  }
+
+  //===========>>> Get Sub-Categories for Selected Service
+  List<String> getSubCategoriesForService(String service) {
+    switch (service) {
+      case 'cleaning':
+        return [
+          'Home deep cleaning',
+          'Sofa / Carpet / Curtain cleaning',
+          'Bathroom / Kitchen cleaning',
+          'Water tank cleaning'
+        ];
+      case 'electrician':
+        return [
+          'Fan / light installation',
+          'Switchboard repair',
+          'Wiring / short circuit fix',
+          'Inverter installation'
+        ];
+      case 'plumber':
+        return [
+          'Tap / shower installation or repair',
+          'Pipe leakage fix',
+          'Water purifier fitting',
+          'Bathroom fittings installation'
+        ];
+      case 'appliance':
+        return [
+          'AC repair / service',
+          'Refrigerator, washing machine, microwave repair',
+          'TV mounting / repair',
+          'Geyser repair & installation'
+        ];
+      case 'pest_control':
+        return [
+          'Cockroach control',
+          'Termite treatment',
+          'Bed bug control',
+          'Rodent control'
+        ];
+      case 'carpenter':
+        return [
+          'Furniture assembly',
+          'Door lock fixing',
+          'Custom woodwork',
+          'Repair work'
+        ];
+      case 'painting':
+        return [
+          'Full home painting',
+          'Room-wise painting',
+          'Touch-up painting',
+          'Waterproofing'
+        ];
+      case 'salon':
+        return [
+          'For men & women',
+          'Haircut, waxing, facial, manicure/pedicure'
+        ];
+      case 'fitness':
+        return [
+          'Personal yoga trainer',
+          'Fitness coach',
+          'Meditation session booking'
+        ];
+      case 'packers_movers':
+        return [
+          'Local shifting',
+          'Intercity relocation',
+          'Office shifting'
+        ];
+      case 'tutors':
+        return [
+          'Subject-wise tutor',
+          'Online/offline options',
+          'Competitive exam coaching'
+        ];
+      case 'laundry':
+        return [
+          'Pick-up and delivery',
+          'Dry cleaning',
+          'Ironing service'
+        ];
+      case 'cctv_security':
+        return [
+          'CCTV setup',
+          'Video door phone',
+          'Alarm systems'
+        ];
+      case 'gardening':
+        return [
+          'Garden maintenance',
+          'Landscaping',
+          'Plant care services'
+        ];
+      case 'elderly_care':
+        return [
+          'Verified caregivers',
+          'On-demand / monthly basis',
+          'Trained babysitters'
+        ];
+      default:
+        return [];
+    }
+  }
+
+  //===========>>> Get All Services
+  Map<String, String> getAllServices() {
+    return {
+      'cleaning': 'Cleaning Services',
+      'electrician': 'Electrician Services',
+      'plumber': 'Plumber Services',
+      'appliance': 'Appliance Repair & Installation',
+      'pest_control': 'Pest Control',
+      'carpenter': 'Carpenter Services',
+      'painting': 'Home Painting',
+      'salon': 'Salon at Home',
+      'fitness': 'Fitness & Yoga Trainer at Home',
+      'packers_movers': 'Packers and Movers',
+      'tutors': 'Home Tutors',
+      'laundry': 'Laundry Services',
+      'cctv_security': 'CCTV & Security Installation',
+      'gardening': 'Gardening Services',
+      'elderly_care': 'Elderly Care / Baby Sitting',
+    };
   }
 
   @override

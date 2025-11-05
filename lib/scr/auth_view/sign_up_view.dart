@@ -91,7 +91,7 @@ class SignUpView extends StatelessWidget {
                   OrangeButton(onTap: (){
                     final form = authController.signUpFormKey.currentState;
                     if (form != null && form.validate()) {
-                      Get.snackbar('Success', 'Form is valid');
+                      Get.toNamed(AppRoutes.userServiceDetailsView);
                     }
                   }, text: "Sign up"),
                   SizedBox(height: screenHeight*.02),

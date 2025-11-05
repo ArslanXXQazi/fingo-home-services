@@ -16,6 +16,7 @@ import 'package:fingodriver/scr/home_views/top_up_history.dart';
 import 'package:fingodriver/scr/home_views/wallet_view.dart';
 import 'package:fingodriver/scr/home_views/withdraw_method.dart';
 import 'package:fingodriver/scr/home_views/map_view.dart';
+import 'package:fingodriver/scr/home_views/user_service_details_view.dart';
 
 import '../components/components/constant/linker.dart';
 
@@ -43,6 +44,7 @@ class AppRoutes {
   static  final String homeView = '/homeView';
   static  final String bookingNavView = '/bookingNavView';
   static  final String mapView = '/mapView';
+  static  final String userServiceDetailsView = '/userServiceDetailsView';
 
   static final routes = [
 
@@ -67,6 +69,7 @@ class AppRoutes {
     GetPage(name: homeView, page: ()=>HomeView()),
     GetPage(name: bottomNavView, page: ()=>BookingNavView()),
     GetPage(name: mapView, page: ()=>MapView()),
+    GetPage(name: userServiceDetailsView, page: ()=>UserServiceDetailsView()),
   ];
 
 
