@@ -1,4 +1,3 @@
-import 'package:fingodriver/scr/components/components/common_widgets/custom-appbar_2nd.dart';
 import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
 import 'package:fingodriver/scr/components/components/common_widgets/service_card.dart';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
@@ -62,17 +61,26 @@ class MyServicesView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: screenHeight * 0.02),
-                      ...homeController.userServices.map((service) {
+                      ...homeController.userServices.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final service = entry.value;
                         final serviceKey = service['serviceKey'] as String;
                         final serviceName = service['serviceName'] as String;
                         final subCategory = service['subCategory'] as String;
                         final iconPath = homeController.getServiceIcon(serviceKey);
 
-                        return ServiceCard(
-                          serviceName: serviceName,
-                          subCategory: subCategory,
-                          iconPath: iconPath,
-                        );
+                        return Obx(() {
+                          final isEnabled = homeController.userServices[index]['isEnabled'] as bool? ?? true;
+                          return ServiceCard(
+                            serviceName: serviceName,
+                            subCategory: subCategory,
+                            iconPath: iconPath,
+                            isEnabled: isEnabled,
+                            onToggle: () {
+                              homeController.toggleUserServiceStatus(index);
+                            },
+                          );
+                        });
                       }).toList(),
                       SizedBox(height: screenHeight * 0.02),
                     ],

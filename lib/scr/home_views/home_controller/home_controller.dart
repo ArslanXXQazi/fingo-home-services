@@ -301,6 +301,7 @@ class HomeController extends GetxController {
         'subCategory': subCategory,
         'experienceYears': experienceYears,
         'experienceMonths': experienceMonths,
+        'isEnabled': true, // Default service is enabled
       });
     }
   }
@@ -309,6 +310,17 @@ class HomeController extends GetxController {
   void removeUserService(int index) {
     if (index >= 0 && index < userServices.length) {
       userServices.removeAt(index);
+    }
+  }
+
+  //===========>>> Toggle User Service Status (on/off)
+  void toggleUserServiceStatus(int index) {
+    if (index >= 0 && index < userServices.length) {
+      final currentValue = userServices[index]['isEnabled'] as bool? ?? true;
+      userServices[index]['isEnabled'] = !currentValue;
+      // Force update by assigning a new list reference
+      final updatedList = List<Map<String, dynamic>>.from(userServices);
+      userServices.assignAll(updatedList);
     }
   }
 

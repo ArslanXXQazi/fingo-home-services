@@ -4,12 +4,16 @@ class ServiceCard extends StatelessWidget {
   final String serviceName;
   final String subCategory;
   final String iconPath;
+  final bool isEnabled;
+  final VoidCallback onToggle;
 
   const ServiceCard({
     Key? key,
     required this.serviceName,
     required this.subCategory,
     required this.iconPath,
+    required this.isEnabled,
+    required this.onToggle,
   }) : super(key: key);
 
   @override
@@ -85,6 +89,17 @@ class ServiceCard extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          // Switch Button
+          Switch(
+            value: isEnabled,
+            onChanged: (value) {
+              onToggle();
+            },
+            activeColor: AppColors.whiteColor,
+            activeTrackColor: AppColors.orangeColor,
+            inactiveThumbColor: Colors.black,
+            inactiveTrackColor: AppColors.backGroundGrey,
           ),
         ],
       ),
