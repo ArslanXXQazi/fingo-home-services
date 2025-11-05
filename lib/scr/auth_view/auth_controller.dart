@@ -2,7 +2,6 @@
 
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 class AuthController extends GetxController {
   final emailController = TextEditingController();
@@ -33,6 +32,9 @@ class AuthController extends GetxController {
   final userPhoneController = TextEditingController();
   final userAddressController = TextEditingController();
   final userCnicController = TextEditingController();
+  final userExperienceController = TextEditingController();
+  final RxString selectedExperienceYears = '0'.obs;
+  final RxString selectedExperienceMonths = '0'.obs;
   final userDetailsFormKey = GlobalKey<FormState>();
   final userServiceDetailsFormKey = GlobalKey<FormState>();
   var userServiceStep = 1.obs; // 1 = User Details, 2 = Service Selection
@@ -183,6 +185,7 @@ class AuthController extends GetxController {
     userPhoneController.dispose();
     userAddressController.dispose();
     userCnicController.dispose();
+    userExperienceController.dispose();
     super.onClose();
   }
 }

@@ -17,7 +17,6 @@ import 'package:fingodriver/scr/home_views/wallet_view.dart';
 import 'package:fingodriver/scr/home_views/withdraw_method.dart';
 import 'package:fingodriver/scr/home_views/map_view.dart';
 import 'package:fingodriver/scr/home_views/user_service_details_view.dart';
-import 'package:fingodriver/scr/home_views/service_selection_view.dart';
 import 'package:fingodriver/scr/home_views/sub_category_selection_view.dart';
 
 import '../components/components/constant/linker.dart';
@@ -46,7 +45,6 @@ class AppRoutes {
   static  final String bookingNavView = '/bookingNavView';
   static  final String mapView = '/mapView';
   static  final String userServiceDetailsView = '/userServiceDetailsView';
-  static  final String serviceSelectionView = '/serviceSelectionView';
   static  final String subCategorySelectionView = '/subCategorySelectionView';
 
   static final routes = [
@@ -72,7 +70,6 @@ class AppRoutes {
     GetPage(name: bottomNavView, page: ()=>BookingNavView()),
     GetPage(name: mapView, page: ()=>MapView()),
     GetPage(name: userServiceDetailsView, page: ()=>UserServiceDetailsView()),
-    GetPage(name: serviceSelectionView, page: ()=>ServiceSelectionView()),
     GetPage(name: subCategorySelectionView, page: ()=>SubCategorySelectionView()),
   ];
 

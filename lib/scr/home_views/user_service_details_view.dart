@@ -247,6 +247,243 @@ class UserServiceDetailsView extends StatelessWidget {
                                 );
                               }),
 
+                              SizedBox(height: screenHeight*.02),
+                              BlackText(text: "Experience", fontSize: 15, fontWeight: FontWeight.w700,),
+                              SizedBox(height: screenHeight*.01),
+                              BlackText(text: "How long have you been working in this service?", fontSize: 12, fontWeight: FontWeight.w400, textColor: AppColors.greyText,),
+                              SizedBox(height: screenHeight*.015),
+                              // Experience Years and Months Selector
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        BlackText(text: "Years", fontSize: 12, fontWeight: FontWeight.w500,),
+                                        SizedBox(height: screenHeight*.008),
+                                        Obx(() => Container(
+                                          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03, vertical: screenHeight * 0.015),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(10),
+                                            border: Border.all(
+                                              color: authController.selectedExperienceYears.value != '0' 
+                                                  ? AppColors.orangeColor.withOpacity(0.3) 
+                                                  : Colors.grey.withOpacity(0.2),
+                                              width: 1,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey.withOpacity(0.1),
+                                                spreadRadius: 1,
+                                                blurRadius: 4,
+                                                offset: const Offset(0, 2),
+                                              ),
+                                            ],
+                                          ),
+                                          child: DropdownButtonHideUnderline(
+                                            child: DropdownButton<String>(
+                                              isExpanded: true,
+                                              value: authController.selectedExperienceYears.value,
+                                              icon: Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.greyText, size: screenWidth * 0.05),
+                                              style: TextStyle(
+                                                color: AppColors.blackColor,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                              dropdownColor: Colors.white,
+                                              menuMaxHeight: screenHeight * 0.4,
+                                              borderRadius: BorderRadius.circular(12),
+                                              elevation: 8,
+                                              items: List.generate(21, (index) => index.toString())
+                                                  .map((year) => DropdownMenuItem(
+                                                    value: year,
+                                                    child: Container(
+                                                      padding: EdgeInsets.symmetric(
+                                                        horizontal: screenWidth * 0.02, 
+                                                        vertical: screenHeight * 0.01,
+                                                      ),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(6),
+                                                      ),
+                                                      child: BlackText(
+                                                        text: year == '0' ? '0' : '$year ${year == '1' ? 'year' : 'years'}',
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500,
+                                                        textColor: AppColors.blackColor,
+                                                        textAlign: TextAlign.left,
+                                                      ),
+                                                    ),
+                                                  ))
+                                                  .toList(),
+                                              selectedItemBuilder: (BuildContext context) {
+                                                return List.generate(21, (index) => index.toString())
+                                                    .map((year) => Align(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: BlackText(
+                                                        text: year == '0' ? '0' : '$year ${year == '1' ? 'year' : 'years'}',
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500,
+                                                        textColor: AppColors.blackColor,
+                                                        textAlign: TextAlign.left,
+                                                      ),
+                                                    ))
+                                                    .toList();
+                                              },
+                                              onChanged: (value) {
+                                                if (value != null) {
+                                                  authController.selectedExperienceYears.value = value;
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        )),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(width: screenWidth * 0.03),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        BlackText(text: "Months", fontSize: 12, fontWeight: FontWeight.w500,),
+                                        SizedBox(height: screenHeight*.008),
+                                        Obx(() => Container(
+                                          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03, vertical: screenHeight * 0.015),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(10),
+                                            border: Border.all(
+                                              color: authController.selectedExperienceMonths.value != '0' 
+                                                  ? AppColors.orangeColor.withOpacity(0.3) 
+                                                  : Colors.grey.withOpacity(0.2),
+                                              width: 1,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey.withOpacity(0.1),
+                                                spreadRadius: 1,
+                                                blurRadius: 4,
+                                                offset: const Offset(0, 2),
+                                              ),
+                                            ],
+                                          ),
+                                          child: DropdownButtonHideUnderline(
+                                            child: DropdownButton<String>(
+                                              isExpanded: true,
+                                              value: authController.selectedExperienceMonths.value,
+                                              icon: Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.greyText, size: screenWidth * 0.05),
+                                              style: TextStyle(
+                                                color: AppColors.blackColor,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                              dropdownColor: Colors.white,
+                                              menuMaxHeight: screenHeight * 0.3,
+                                              borderRadius: BorderRadius.circular(12),
+                                              elevation: 8,
+                                              items: List.generate(12, (index) => index.toString())
+                                                  .map((month) => DropdownMenuItem(
+                                                    value: month,
+                                                    child: Container(
+                                                      padding: EdgeInsets.symmetric(
+                                                        horizontal: screenWidth * 0.02, 
+                                                        vertical: screenHeight * 0.01,
+                                                      ),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(6),
+                                                      ),
+                                                      child: BlackText(
+                                                        text: month == '0' ? '0' : '$month ${month == '1' ? 'month' : 'months'}',
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500,
+                                                        textColor: AppColors.blackColor,
+                                                        textAlign: TextAlign.left,
+                                                      ),
+                                                    ),
+                                                  ))
+                                                  .toList(),
+                                              selectedItemBuilder: (BuildContext context) {
+                                                return List.generate(12, (index) => index.toString())
+                                                    .map((month) => Align(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: BlackText(
+                                                        text: month == '0' ? '0' : '$month ${month == '1' ? 'month' : 'months'}',
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500,
+                                                        textColor: AppColors.blackColor,
+                                                        textAlign: TextAlign.left,
+                                                      ),
+                                                    ))
+                                                    .toList();
+                                              },
+                                              onChanged: (value) {
+                                                if (value != null) {
+                                                  authController.selectedExperienceMonths.value = value;
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*.01),
+                              // Display Selected Experience
+                              Obx(() {
+                                final years = authController.selectedExperienceYears.value;
+                                final months = authController.selectedExperienceMonths.value;
+                                String experienceText = '';
+                                
+                                if (years != '0' && months != '0') {
+                                  experienceText = '${years == '1' ? '1 year' : '$years years'} ${months == '1' ? '1 month' : '$months months'}';
+                                } else if (years != '0') {
+                                  experienceText = years == '1' ? '1 year' : '$years years';
+                                } else if (months != '0') {
+                                  experienceText = months == '1' ? '1 month' : '$months months';
+                                } else {
+                                  experienceText = 'No experience';
+                                }
+                                
+                                if (years == '0' && months == '0') {
+                                  return Padding(
+                                    padding: EdgeInsets.only(top: screenHeight * 0.005),
+                                    child: BlackText(
+                                      text: 'Please select your experience',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      textColor: Colors.red,
+                                    ),
+                                  );
+                                }
+                                
+                                return Container(
+                                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03, vertical: screenHeight * 0.012),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.orangeColor.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: AppColors.orangeColor.withOpacity(0.3)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.work_outline, color: AppColors.orangeColor, size: screenWidth * 0.05),
+                                      SizedBox(width: screenWidth * 0.02),
+                                      Expanded(
+                                        child: BlackText(
+                                          text: 'Experience: $experienceText',
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w600,
+                                          textColor: AppColors.orangeColor,
+                                          textAlign: TextAlign.left,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
+
                               SizedBox(height: screenHeight*.03),
                               Row(
                                 children: [
@@ -266,6 +503,10 @@ class UserServiceDetailsView extends StatelessWidget {
                                           }
                                           if (homeController.selectedSubCategory.value.isEmpty) {
                                             Get.snackbar('Error', 'Please select a sub-category');
+                                            return;
+                                          }
+                                          if (authController.selectedExperienceYears.value == '0' && authController.selectedExperienceMonths.value == '0') {
+                                            Get.snackbar('Error', 'Please select your experience');
                                             return;
                                           }
                                           final form = authController.userServiceDetailsFormKey.currentState;
