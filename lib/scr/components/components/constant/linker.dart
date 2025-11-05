@@ -17,7 +17,7 @@ export 'package:fingodriver/scr/components/components/common_widgets/orange_butt
 export 'package:fingodriver/scr/components/components/common_widgets/bank_transfer_card.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/service_status_card.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/performance_card.dart';
-export 'package:fingodriver/scr/starting_view/starting_controller.dart';
+export 'package:fingodriver/scr/controllers/starting_controller.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/social_login_buttons.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/text_feild_widget.dart';
