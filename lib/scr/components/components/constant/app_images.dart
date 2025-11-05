@@ -102,5 +102,6 @@ class AppImages
   static final String cctvCamera = 'assets/cctvcamera.png';
   static final String gardeningServices = 'assets/gardeningServices.png';
   static final String baby = 'assets/baby.png';
+  static final String myServices = 'assets/myServices.png';
 
 }
