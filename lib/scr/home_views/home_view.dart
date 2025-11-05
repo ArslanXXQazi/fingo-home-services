@@ -1,5 +1,5 @@
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/customer_feedback_card.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/customer_feedback_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

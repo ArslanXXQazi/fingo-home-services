@@ -1,7 +1,7 @@
-import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/service_card.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/edit_service_dialog.dart';
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/custom_app_bar.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/service_card.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/edit_service_dialog.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
 
 class MyServicesView extends StatelessWidget {
   const MyServicesView({super.key});

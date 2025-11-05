@@ -1,5 +1,5 @@
-import 'package:fingodriver/scr/booking_model/booking_model.dart';
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/booking_model/booking_model.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
 
 class BookingController extends GetxController {
   // Selected filter

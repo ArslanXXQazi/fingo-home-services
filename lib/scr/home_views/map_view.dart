@@ -1,7 +1,7 @@
-import 'package:fingodriver/scr/booking_model/booking_model.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/controllers/map_controller.dart';
+import 'package:fingohomeservices/scr/booking_model/booking_model.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/custom_app_bar.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/controllers/map_controller.dart';
 
 class MapView extends StatelessWidget {
   const MapView({super.key});

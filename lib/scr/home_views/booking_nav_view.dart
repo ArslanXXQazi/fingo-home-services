@@ -1,7 +1,7 @@
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/controllers/booking_controller.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/booking_filter_buttons.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/booking_card.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/controllers/booking_controller.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/booking_filter_buttons.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/booking_card.dart';
 
 class BookingNavView extends StatelessWidget {
   BookingNavView({super.key});

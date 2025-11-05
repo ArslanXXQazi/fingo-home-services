@@ -1,7 +1,7 @@
 
-import 'package:fingodriver/scr/components/components/common_widgets/app_drawer.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/app_drawer.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/custom_app_bar.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
 
 class TopUpHistory extends StatelessWidget {
   const TopUpHistory({super.key});

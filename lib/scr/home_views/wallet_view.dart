@@ -1,7 +1,7 @@
-import 'package:fingodriver/scr/components/components/common_widgets/app_drawer.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/custom-appbar_2nd.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/wallet_topup_sheet.dart';
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/app_drawer.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/custom-appbar_2nd.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/wallet_topup_sheet.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
 
 class WalletView extends StatefulWidget {
   const WalletView({super.key});

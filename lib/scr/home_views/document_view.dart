@@ -1,6 +1,6 @@
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/document_card.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/custom_app_bar.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/document_card.dart';
 
 class DocumentView extends StatelessWidget {
   const DocumentView({super.key});

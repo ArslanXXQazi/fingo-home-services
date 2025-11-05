@@ -1,4 +1,4 @@
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
 import 'package:flutter/services.dart';
 
 class OtpFieldWidget extends StatelessWidget {

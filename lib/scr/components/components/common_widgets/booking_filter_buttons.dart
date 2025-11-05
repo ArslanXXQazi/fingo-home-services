@@ -1,5 +1,5 @@
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/controllers/booking_controller.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/controllers/booking_controller.dart';
 
 class BookingFilterButtons extends StatelessWidget {
   final String selectedFilter;

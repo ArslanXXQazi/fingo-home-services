@@ -1,9 +1,9 @@
-import 'package:fingodriver/scr/booking_model/booking_model.dart';
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/accept_reject_dialog.dart';
-import 'package:fingodriver/scr/controllers/booking_controller.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/booking_details_bottom_sheet.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/payment_received_dialog.dart';
+import 'package:fingohomeservices/scr/booking_model/booking_model.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/accept_reject_dialog.dart';
+import 'package:fingohomeservices/scr/controllers/booking_controller.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/booking_details_bottom_sheet.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/payment_received_dialog.dart';
 
 class BookingCard extends StatelessWidget {
   final BookingModel booking;

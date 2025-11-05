@@ -1,7 +1,7 @@
-import 'package:fingodriver/scr/components/components/common_widgets/custom_app_bar.dart';
-import 'package:fingodriver/scr/components/components/common_widgets/gender_selector.dart';
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/controllers/edit_profile_controller.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/custom_app_bar.dart';
+import 'package:fingohomeservices/scr/components/components/common_widgets/gender_selector.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/controllers/edit_profile_controller.dart';
 
 class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});

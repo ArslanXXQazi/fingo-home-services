@@ -1,5 +1,5 @@
 
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
 
 Future<void> showConfirmDialog({
   required BuildContext context,

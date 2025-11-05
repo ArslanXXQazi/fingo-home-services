@@ -1,8 +1,8 @@
-import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/home_views/booking_nav_view.dart';
-import 'package:fingodriver/scr/home_views/home_view.dart';
-import 'package:fingodriver/scr/home_views/my_profile_view.dart';
-import 'package:fingodriver/scr/home_views/wallet_view.dart';
+import 'package:fingohomeservices/scr/components/components/constant/linker.dart';
+import 'package:fingohomeservices/scr/home_views/booking_nav_view.dart';
+import 'package:fingohomeservices/scr/home_views/home_view.dart';
+import 'package:fingohomeservices/scr/home_views/my_profile_view.dart';
+import 'package:fingohomeservices/scr/home_views/wallet_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 class BottomNavView extends StatelessWidget {
