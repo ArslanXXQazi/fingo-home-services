@@ -4,7 +4,7 @@
 import 'package:fingodriver/scr/bottom_nav_bar_views/bottom_nav_view.dart';
 import 'package:fingodriver/scr/home_views/account_detail_view.dart';
 import 'package:fingodriver/scr/home_views/add_bank_view.dart';
-import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_nav_view.dart';
+import 'package:fingodriver/scr/home_views/booking_nav_view.dart';
 import 'package:fingodriver/scr/home_views/contact_us_view.dart';
 import 'package:fingodriver/scr/home_views/driver_inbox.dart';
 import 'package:fingodriver/scr/home_views/home_view.dart';

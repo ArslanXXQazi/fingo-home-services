@@ -8,7 +8,7 @@ export 'package:get/get_navigation/get_navigation.dart';
 export 'package:get/get_state_manager/src/simple/get_controllers.dart';
 export 'package:get/get.dart';
 
-export 'package:fingodriver/scr/auth_view/auth_controller.dart';
+export 'package:fingodriver/scr/controllers/auth_controller.dart';
 export 'package:fingodriver/scr/components/components/constant/app_colors.dart';
 export 'package:fingodriver/scr/components/components/constant/app_images.dart';
 export 'package:fingodriver/scr/routes/app_routes.dart';
@@ -25,7 +25,7 @@ export 'package:fingodriver/scr/components/components/common_widgets/gender_sele
 export 'package:fingodriver/scr/components/components/common_widgets/service_card.dart';
 export 'package:intl_phone_field/intl_phone_field.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/otp_field_widget.dart';
-export 'package:fingodriver/scr/home_views/home_controller/home_controller.dart';
+export 'package:fingodriver/scr/controllers/home_controller.dart';
 export 'package:fingodriver/scr/auth_view/login_view.dart';
 export 'package:fingodriver/scr/auth_view/otp_view.dart';
 export 'package:fingodriver/scr/auth_view/phone_number_view.dart';
@@ -36,15 +36,14 @@ export 'package:fingodriver/scr/starting_view/splash_view.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/booking_filter_buttons.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/booking_card.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/accept_reject_dialog.dart';
-export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.dart';
-export 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_controller.dart';
+export 'package:fingodriver/scr/controllers/booking_controller.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/booking_details_bottom_sheet.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/payment_received_dialog.dart';
 export 'package:fingodriver/scr/components/components/common_widgets/customer_feedback_card.dart';
 export 'package:fingodriver/scr/home_views/map_view.dart';
-export 'package:fingodriver/scr/home_views/map_controller/map_controller.dart';
+export 'package:fingodriver/scr/controllers/map_controller.dart';
 export 'package:fingodriver/scr/home_views/edit_profile_view.dart';
-export 'package:fingodriver/scr/home_views/controllers/edit_profile_controller.dart';
+export 'package:fingodriver/scr/controllers/edit_profile_controller.dart';
 export 'package:fingodriver/scr/home_views/my_services_view.dart';
 
 

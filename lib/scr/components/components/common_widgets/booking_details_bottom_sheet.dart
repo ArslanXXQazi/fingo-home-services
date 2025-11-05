@@ -1,5 +1,5 @@
+import 'package:fingodriver/scr/booking_model/booking_model.dart';
 import 'package:fingodriver/scr/components/components/constant/linker.dart';
-import 'package:fingodriver/scr/bottom_nav_bar_views/booking_view/booking_model.dart';
 
 class BookingDetailsBottomSheet extends StatelessWidget {
   final BookingModel booking;
