@@ -85,4 +85,22 @@ class AppImages
   static final String mapIcon = 'assets/mapIcon.png';
   static final String splashLogo = 'assets/splashLogo.png';
   static final String upload = 'assets/upload.png';
+
+
+  static final String houseCleaning = 'assets/houseCleaning.png';
+  static final String electrician = 'assets/electrician.png';
+  static final String plumber = 'assets/plumber.png';
+  static final String appliance = 'assets/appliance.png';
+  static final String pestControl = 'assets/pestControl.png';
+  static final String carpenter = 'assets/carpenter.png';
+  static final String homePainting = 'assets/homePainting.png';
+  static final String salonServices = 'assets/salonServices.png';
+  static final String yoga = 'assets/yoga.png';
+  static final String packersMover = 'assets/packersMover.png';
+  static final String homeschooling = 'assets/homeschooling.png';
+  static final String laundryServices = 'assets/laundryServices.png';
+  static final String cctvCamera = 'assets/cctvcamera.png';
+  static final String gardeningServices = 'assets/gardeningServices.png';
+  static final String baby = 'assets/baby.png';
+
 }
